@@ -38,6 +38,3 @@ vim.opt.laststatus = 3
 -- this is for history undo file
 vim.opt.undofile = true
 
--- this is to enable the spliting vertical and horizontal
--- vim.opt.splitright = true
--- vim.opt.splitbelow = true

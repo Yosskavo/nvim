@@ -1,0 +1,29 @@
+----------------------------- the depandancy that you need to install for neovim ----------------------------------
+--> clangd
+--> fd
+--> fzf
+--> rg
+
+
+------------------------ this is the task's done by yosskavo ----------------------------------
+--> auto save						  : done
+--> clear history search			  : done
+--> formatter c (norminette standart) : done
+--> lazy plugin                       : done
+
+
+------------------------ some plugins i installed ----------------------------------
+--> lsp
+--> telescope
+--> tokyonight
+--> web-devicons
+--> plenary
+--> treesitter
+--> mason
+
+
+--- next : 
+--> lazy git
+--> todo-comments
+
+--- should config the lazy cs it overlap the origin config 
