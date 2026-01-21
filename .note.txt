@@ -22,8 +22,8 @@
 --> mason
 
 
---- next : 
+--- next ---
 --> lazy git
 --> todo-comments
-
---- should config the lazy cs it overlap the origin config 
+--> hide .o from telescope and any search
+--- should config the lazy cs it overlap the origin config : done

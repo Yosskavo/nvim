@@ -18,10 +18,10 @@ vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", {desc = "split the window verta
 -----------------------------! for norminette or formating files by extentions !-------------------------------------------
 -- this is for norminette
 vim.keymap.set("n", "<leader>nf", function() require("core.formatter").format_42() end, { desc = "42 Norm Formatter", silent = true }) -- this is for formatting
+vim.keymap.set("n", "<leader>nh", ":Stdheader<CR>", { desc = "42 header", silent = true }) -- this is for header
 
 
 -----------------------------! move or for editing !-------------------------------------------
-
 -- Move Lines
 vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
@@ -29,8 +29,6 @@ vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
-
-
 
 
 -----------------------------! file and buffers !-------------------------------------------
@@ -42,3 +40,14 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fn', ":new<CR>", {desc = "new file", silent = true})
 
+--- for todo-comments
+vim.keymap.set("n", "<leader>tf", ":TodoLocList<CR>", {desc = "find todo-comments", silent = true})
+vim.keymap.set("n", "<leader>ft", ":TodoTelescope<CR>", {desc = "find todo-comments", silent = true})
+
+--- this is for trouble
+vim.keymap.set("n", "<leader>xx", ":Trouble diagnostics toggle<CR>", {desc = "Diagnostics (Trouble)", silent = true})
+vim.keymap.set("n", "<leader>xX", ":Trouble diagnostics toggle filter.buf=0<CR>", {desc = "Buffer Diagnostics (Trouble)", silent = true})
+vim.keymap.set("n", "<leader>xs", ":Trouble symbols toggle focus=false<CR>", {desc = "Symbols (Trouble)", silent = true})
+vim.keymap.set("n", "<leader>xl", ":Trouble lsp toggle focus=false win.position=right<CR>", {desc = "LSP Definitions / references / ... (Trouble)", silent = true})
+vim.keymap.set("n", "<leader>xL", ":Trouble loclist toggle<CR>", {desc = "Location List (Trouble)", silent = true})
+vim.keymap.set("n", "<leader>xQ", ":Trouble qflist toggle<CR>", {desc = "Quickfix List (Trouble)", silent = true})
