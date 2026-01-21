@@ -11,3 +11,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		end
   end,
 })
+
+-- this is for treesitter highlighting
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
