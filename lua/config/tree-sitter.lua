@@ -6,9 +6,13 @@ local parsers = {
   "cpp",
   "python",
   "lua",
+  "vim",
+  "vimdoc",
   "dockerfile",
   "yaml",
   "json",
+  "markdown",
+  "markdown_inline",
 }
 
 -- Install missing parsers and wait, silently
