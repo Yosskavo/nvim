@@ -7,9 +7,6 @@ return {
       install_dir = vim.fn.stdpath("data") .. "/site",
     })
 
-    require("nvim-treesitter").install({
-      "c", "cpp", "python", "lua", "vim",
-      "dockerfile", "yaml", "json", "markdown",
-    })
+    require("config.tree-sitter")
   end,
 }
