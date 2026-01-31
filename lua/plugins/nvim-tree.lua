@@ -6,6 +6,6 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    require("nvim-tree").setup {}
+    require("config.nvim-tree")
   end,
 }
