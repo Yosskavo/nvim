@@ -51,3 +51,6 @@ vim.keymap.set("n", "<leader>xs", ":Trouble symbols toggle focus=false<CR>", {de
 vim.keymap.set("n", "<leader>xl", ":Trouble lsp toggle focus=false win.position=right<CR>", {desc = "LSP Definitions / references / ... (Trouble)", silent = true})
 vim.keymap.set("n", "<leader>xL", ":Trouble loclist toggle<CR>", {desc = "Location List (Trouble)", silent = true})
 vim.keymap.set("n", "<leader>xQ", ":Trouble qflist toggle<CR>", {desc = "Quickfix List (Trouble)", silent = true})
+
+--- for nvim-tree || files
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {desc = "Toggle NvimTree", silent = true})
