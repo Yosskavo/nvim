@@ -1,0 +1,14 @@
+local M ={}
+
+function M.setup()
+	require("tokyonight").setup
+	{
+		on_highlights = function(hl, c)
+			hl.NormalFloat = { bg = c.bg_dark } -- Makes the float background a solid dark color
+			hl.FloatBorder = { bg = c.bg_dark }
+		end
+	}
+end
+
+
+return M

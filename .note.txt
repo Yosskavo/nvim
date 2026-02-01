@@ -20,10 +20,12 @@
 --> plenary
 --> treesitter
 --> mason
+--> witch-key or any key config
+--> todo-comments
 
+----  done -----
+--- should config the lazy cs it overlap the origin config : done
 
 --- next ---
 --> lazy git
---> todo-comments
 --> hide .o from telescope and any search
---- should config the lazy cs it overlap the origin config : done

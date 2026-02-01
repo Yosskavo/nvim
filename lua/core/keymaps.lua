@@ -58,3 +58,24 @@ vim.keymap.set("n", "<leader>xQ", ":Trouble qflist toggle<CR>", {desc = "Quickfi
 
 --- for nvim-tree || files
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {desc = "Toggle NvimTree", silent = true})
+
+-- for oil (the pluging for nagiviting between files)
+vim.keymap.set("n", "-", ":Oil --float<CR>", {desc = "open the oil in floating window", silent = true})
+
+-- Press <Esc> to clear search highlights
+vim.keymap.set("n", "<Esc>", "<cmd>noh<CR><Esc>", { desc = "Clear search highlights" })
+
+-- some formathing things here
+vim.keymap.set("n", "<leader>f", function()
+    -- Save the file first to ensure the formatter sees the latest changes
+    vim.cmd("silent! write")
+
+    -- Run the formatter
+    local file = vim.fn.expand("%")
+    local result = vim.fn.system("c_formatter_42 " .. file)
+
+    -- Reload the buffer to show changes
+    vim.cmd("edit!")
+    print("42 Formatter Applied")
+end, { desc = "42 Formatter (Lua)" })
+

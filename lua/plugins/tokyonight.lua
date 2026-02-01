@@ -1,10 +1,11 @@
 return {
   "folke/tokyonight.nvim",
+  style = "night",
   enabled = true,
   lazy = false,
-  priority = 1000,
+  -- priority = 1000,
 	config = function()
-      -- This is where you call the command to apply the theme
+		require("config.tokyonight").setup()
       vim.cmd([[colorscheme tokyonight]])
     end,
 }
