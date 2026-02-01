@@ -14,6 +14,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", {desc = "move to right window"})
 vim.keymap.set("n", "<leader>sh", ":split<CR>", {desc = "split the window horizontaly", silent = true})
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", {desc = "split the window vertacly", silent = true})
 
+-- this is for switch tabs
+vim.keymap.set("n", "<Tab>", function() vim.cmd("tabnext") end, { desc = "Next tab" })
+vim.keymap.set("n", "<S-Tab>", function() vim.cmd("tabprevious") end, { desc = "Previous tab" })
+
 
 -----------------------------! for norminette or formating files by extentions !-------------------------------------------
 -- this is for norminette
@@ -51,3 +55,6 @@ vim.keymap.set("n", "<leader>xs", ":Trouble symbols toggle focus=false<CR>", {de
 vim.keymap.set("n", "<leader>xl", ":Trouble lsp toggle focus=false win.position=right<CR>", {desc = "LSP Definitions / references / ... (Trouble)", silent = true})
 vim.keymap.set("n", "<leader>xL", ":Trouble loclist toggle<CR>", {desc = "Location List (Trouble)", silent = true})
 vim.keymap.set("n", "<leader>xQ", ":Trouble qflist toggle<CR>", {desc = "Quickfix List (Trouble)", silent = true})
+
+--- for nvim-tree || files
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {desc = "Toggle NvimTree", silent = true})
