@@ -6,7 +6,8 @@ function M.setup()
 		default_file_explorer = true,
 		keymaps =
 		{
-			["q"] = "actions.close"
+			["q"] = "actions.close",
+			["<Esc>"] = "actions.close",
 		},
 		columns =
 		{

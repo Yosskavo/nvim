@@ -1,4 +1,5 @@
 -----------------------------! this is for system thing's !-------------------------------------------
+--
 -- this to save and source the config
 vim.keymap.set("n", "<leader>s", ":w<CR>:source %<CR>", {desc = "sourcing the file of config", silent = true})
 
@@ -56,8 +57,7 @@ vim.keymap.set("n", "<leader>xl", ":Trouble lsp toggle focus=false win.position=
 vim.keymap.set("n", "<leader>xL", ":Trouble loclist toggle<CR>", {desc = "Location List (Trouble)", silent = true})
 vim.keymap.set("n", "<leader>xQ", ":Trouble qflist toggle<CR>", {desc = "Quickfix List (Trouble)", silent = true})
 
---- for nvim-tree || files
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {desc = "Toggle NvimTree", silent = true})
+-----------------------------! this is for plugins !-------------------------------------------
 
 -- for oil (the pluging for nagiviting between files)
 vim.keymap.set("n", "-", ":Oil --float<CR>", {desc = "open the oil in floating window", silent = true})
@@ -79,3 +79,7 @@ vim.keymap.set("n", "<leader>f", function()
     print("42 Formatter Applied")
 end, { desc = "42 Formatter (Lua)" })
 
+-- lsp
+
+vim.keymap.set("i", "<A-S-k>", function() vim.lsp.buf.hover() end, {desc = "hover lsp", silent = true})
+vim.keymap.set("v", "<S-k>", function() vim.lsp.buf.hover() end, {desc = "hover lsp", silent = true})

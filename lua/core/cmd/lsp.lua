@@ -1,0 +1,24 @@
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     local border = "rounded"
+--
+--     -- Apply rounded borders to hover and signature help for the attached client
+--     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+--       vim.lsp.handlers.hover, {
+--         border = border,
+--       }
+--     )
+--
+--     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+--       vim.lsp.handlers.signature_help, {
+--         border = border,
+--       }
+--     )
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--   callback = function()
+--     vim.api.nvim_set_hl(0, 'LspReferenceTarget', {fg = "#112233"})
+--   end,
+-- })

@@ -6,6 +6,10 @@ function M.setup()
 		global = false,
 		win =
 		{
+			wo =
+			{
+				winblend = 50,
+			},
 			width = 35,
 			height = 15,
 			col = 0,
