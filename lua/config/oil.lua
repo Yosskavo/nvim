@@ -26,9 +26,13 @@ function M.setup()
 			list = false,
 			conceallevel = 3,
 			concealcursor = "nvic",
-			-- winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-		  },
-		  -- Floating window settings (for when you run :Oil --float)
+			winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+		},
+		-- Floating window settings (for when you run :Oil --float)
+		confirmation =
+		{
+			border = "rounded",
+		},
 		float =
 		{
 			padding = 2,

@@ -1,5 +1,3 @@
 require("core.cmd.autosave")
-require("core.cmd.yank")
-require("core.cmd.float_wind")
 require("core.cmd.treesitter")
 require("core.cmd.lsp")

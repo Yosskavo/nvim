@@ -16,6 +16,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	opts =
+	{
+		autocmds = false,
+		keymaps = false
+	},
 	spec = {
 		-- add LazyVim and import its plugins
 		-- { "LazyVim/LazyVim" },

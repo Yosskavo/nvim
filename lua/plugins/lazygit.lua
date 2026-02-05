@@ -17,4 +17,5 @@ return {
     keys = {
         { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
     }
+	-- TODO: something to do here
 }

@@ -14,7 +14,7 @@ local servers = {
 		  Lua = {
 			diagnostics = {
 			  -- This tells the LSP that 'vim' is a valid global variable
-			  globals = { 'vim' }, 
+			  globals = { 'vim' },
 			},
 			workspace = {
 			  -- This helps the LSP find Neovim's built-in functions

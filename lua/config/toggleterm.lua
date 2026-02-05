@@ -21,7 +21,7 @@ function M.setup()
 		{
 			border = "rounded",
 			width = function()
-				return math.ceil(vim.o.columns * 0.8)
+				return math.ceil(vim.o.columns * 0.75)
 			end,
 			height = function()
 				return math.ceil(vim.o.lines * 0.75)
@@ -41,8 +41,8 @@ function M.setup()
         pattern = "term://*",
         callback = function()
             local opts = { buffer = 0 }
-            -- Your requested mapping to exit Terminal mode to Normal mode
-            vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+			-- Your requested mapping to exit Terminal mode to Normal mode
+			vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
         end,
     })
 end

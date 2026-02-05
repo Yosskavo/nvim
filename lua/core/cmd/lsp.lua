@@ -22,3 +22,11 @@
 --     vim.api.nvim_set_hl(0, 'LspReferenceTarget', {fg = "#112233"})
 --   end,
 -- })
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.server_capabilities.semanticTokensProvider then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+  end,
+})

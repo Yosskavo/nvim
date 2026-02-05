@@ -2,7 +2,7 @@
 vim.opt.termguicolors = true
 
 -- the characters in the places that unwrighted
-vim.opt.fillchars = { eob = "!" }
+vim.opt.fillchars = { eob = " " }
 
 -- clip board
 vim.opt.clipboard = "unnamedplus"
@@ -38,3 +38,10 @@ vim.opt.laststatus = 3
 -- this is for history undo file
 vim.opt.undofile = true
 
+-- this is for the theme's
+vim.lsp.semantic_tokens.enable = false
+
+-- tabline
+-- vim.o.showtabline = 2
+-- vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+-- vim.opt.hidden = true

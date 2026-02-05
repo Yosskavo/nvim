@@ -1,11 +1,5 @@
 local M = {}
-
--- FIX:
--- HACK:
--- WARN:
--- PERF:
--- NOTE:
--- TEST:
+local colors = require("core.theme.colors").my_colors
 
 function M.setup()
 	require("todo-comments").setup({
@@ -19,12 +13,12 @@ function M.setup()
       alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
       -- signs = false, -- configure signs for some keywords individually
     },
-    TODO = { icon = " ", color = "info" },
-    HACK = { icon = " ", color = "#a9b1d6" },
-    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-    TEST = { icon = "⏲ ", color = "#7aa2f7", alt = { "TESTING", "PASSED", "FAILED" } },
+    TODO = { icon = " ", color = colors.blue_accent },
+    HACK = { icon = " ", color = colors.grey_soft },
+    WARN = { icon = " ", color = colors.peach , alt = { "WARNING", "XXX" } },
+    PERF = { icon = " ", alt = { colors.marine_teal , "PERFORMANCE", "OPTIMIZE" } },
+    NOTE = { icon = " ", color = colors.green_vibrant , alt = { "INFO" } },
+    TEST = { icon = "⏲ ", color = colors.blue_electric, alt = { "TESTING", "PASSED", "FAILED" } },
   },
   gui_style = {
     fg = "NONE", -- The gui style to use for the fg highlight group.

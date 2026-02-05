@@ -1,16 +1,17 @@
 local M = {}
+local colors = require("core.theme.colors").my_colors
 
 M.mode_colors =
 {
-	n        = "#7aa2f7", -- Normal (Blue)
-    i        = "#e0af68", -- Insert (Yellow)
-    t        = "#9ece6a", -- Terminal (Green)
-    v        = "#bb9af7", -- Visual (Purple)
-    V        = "#bb9af7", -- Visual Line
-    ["\22"]  = "#bb9af7", -- Visual Block (Ctrl-V)
-    c        = "#f7768e", -- Command/Search (Red)
-    R        = "#ff9e64", -- Replace (Orange)
-    s        = "#ff007c", -- Select
+	n        = colors.blue_sky, -- Normal
+    i        = colors.yellow, -- Insert
+    t        = colors.naval_green, -- Terminal
+    v        = colors.violet, -- Visual
+    V        = colors.violet, -- Visual Line
+    ["\22"]  = colors.violet, -- Visual Block (Ctrl-V)
+    c        = colors.orange_burnt, -- Command/Search
+    R        = colors.red_deep, -- Replace
+    s        = colors.rose, -- Select
 }
 
 return M

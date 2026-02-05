@@ -8,7 +8,7 @@ function M.setup()
 		{
 			wo =
 			{
-				winblend = 50,
+				winblend = 0,
 			},
 			width = 35,
 			height = 15,
@@ -18,12 +18,15 @@ function M.setup()
 			no_overlap = false,
 			title = true,
 			title_pos = "center",
+			-- windblend = 0,
 			border = "rounded",
 			zindex = 1000,
 		},
 		layout =
 		{
-			width = { min = 20, max = 30 }, -- This forces the window limits
+			height = { min = 4, max = 10 },  -- adjust max height if needed
+			width  = { min = 20, max = 40 }, -- adjust max width
+			-- width = { min = 20, max = 30 }, -- This forces the window limits
     		spacing = 3, -- Space between icon and text
 			columns = 1,
 		},
