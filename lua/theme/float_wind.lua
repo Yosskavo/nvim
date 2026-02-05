@@ -14,6 +14,7 @@ return function()
 			local color = colors[mode] or colors['n'] -- Default to Normal color
 			vim.api.nvim_set_hl(0, "WinSeparator", { fg = color, bg = l_bg , force = true })
 			-- Update the FloatBorder highlight
+			vim.api.nvim_set_hl(0, "LazyGitBorder", { fg = color, bg = l_bg , force = true })
 			vim.api.nvim_set_hl(0, "FloatBorder", { fg = color, bg = l_bg , force = true })
 			-- Optional: If you want Oil or ToggleTerm to have a specific title color
 			vim.api.nvim_set_hl(0, "FloatTitle", { fg = color, bg = l_bg, bold = true, force = true })

@@ -1,5 +1,5 @@
 -- plenary.nvim is a foundational "library" plugin that provides a collection of Lua functions used by many other popular plugins
-return 
+return
 {
   "nvim-lua/plenary.nvim",
   enabled = true

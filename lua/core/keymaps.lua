@@ -1,5 +1,8 @@
 -----------------------------! this is the keymap system !-------------------------------------------
 
+-- this is for norm
+require("core.key.norm")
+
 -- this is for window handling
 require("core.key.wind")
 
@@ -29,3 +32,10 @@ require("core.key.syntax")
 
 -- this is for telescope
 require("core.key.telescope")
+
+-- this is for lazygit
+require("core.key.lazygit")
+
+-- this is for typr
+require("core.key.typr")
+

@@ -10,5 +10,9 @@ return function()
 	-- active floating window
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.bg })
 
+	-- the backgroud for the which key
 	vim.api.nvim_set_hl(0, "WhichKeyNormal", { bg = colors.bg_dim })
+
+	-- the background float lazy wind
+	vim.api.nvim_set_hl(0, "LazyGitFloat", { bg = colors.bg_dim })
 end
