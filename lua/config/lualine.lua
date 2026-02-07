@@ -54,6 +54,10 @@ function M.setup()
             icons_enabled = true,
             theme = tokyonight_theme,
             globalstatus = true,
+			disabled_filetypes = {
+				statusline = {"dashboard"}, -- Hides it on the dashboard
+				winbar = {"dashboard",},
+			},
         },
         sections = {
             lualine_a = {

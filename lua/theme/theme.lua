@@ -8,11 +8,13 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		require("theme.yank")()
 		require("theme.line")()
 		require("theme.lang_theme")()
+		require("theme.dashboard")()
 		require("theme.diagon")()
 		require("theme.barbar")()
     end,
 })
 
+require("theme.dashboard")()
 require("theme.barbar")()
 require("theme.oper")()
 require("theme.background")()

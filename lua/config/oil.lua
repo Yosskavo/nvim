@@ -7,6 +7,7 @@ function M.setup()
 		keymaps =
 		{
 			["q"] = "actions.close",
+			["<c-->"] = "actions.cd",
 			["<Esc>"] = "actions.close",
 		},
 		columns =

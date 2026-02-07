@@ -1,5 +1,8 @@
 -----------------------------! this is the keymap system !-------------------------------------------
 
+require("core.key.nui")
+
+
 -- this is for norm
 require("core.key.norm")
 
@@ -39,3 +42,5 @@ require("core.key.lazygit")
 -- this is for typr
 require("core.key.typr")
 
+-- this is dashboard
+require("core.key.dashboard")
