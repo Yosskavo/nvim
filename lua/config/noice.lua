@@ -5,6 +5,8 @@ local M ={}
 -- NOTE: add the man and help using nui to help ppl in work
 
 
+
+
 -- fg is the border/text color, bg is the background (use "NONE" for transparent)
 vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "FloatBorder" })
 function M.setup()
