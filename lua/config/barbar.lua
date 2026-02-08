@@ -33,9 +33,9 @@ function M.setup()
 				[vim.diagnostic.severity.HINT] = {enabled = true, icon = "󱩒 "},
 			},
 			gitsigns = {
-				added = {enabled = true, icon = ' '},
-				changed = {enabled = true, icon = '󱖫 '},
-				deleted = {enabled = true, icon = ' '},
+				added = {enabled = false, icon = ' '},
+				changed = {enabled = false, icon = '󱖫 '},
+				deleted = {enabled = false, icon = ' '},
 			},
 			filetype = {
 				custom_color = false,
