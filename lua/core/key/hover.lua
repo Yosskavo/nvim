@@ -1,0 +1,4 @@
+-- -- for pretty hover 
+--     vim.keymap.set("n", "K", function() require("pretty_hover").hover() end, { desc = "Pretty LSP Hover" })
+--     vim.keymap.set("i", "<A-K>", function() require("pretty_hover").hover() end, { desc = "Pretty LSP Hover" })
+--     vim.keymap.set("v", "K", function() require("pretty_hover").hover() end, { desc = "Pretty LSP Hover" })

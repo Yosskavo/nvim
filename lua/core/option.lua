@@ -45,3 +45,9 @@ vim.lsp.semantic_tokens.enable = false
 -- vim.o.showtabline = 2
 -- vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
 -- vim.opt.hidden = true
+
+-- Sets the delay for CursorHold (and swap file writing) to 250ms
+vim.opt.updatetime = 0
+-- vim.o.winborder = "rounded"
+
+

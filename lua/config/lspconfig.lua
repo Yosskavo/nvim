@@ -1,6 +1,19 @@
 local M = {}
 local map = vim.keymap.set
 
+vim.diagnostic.config ({
+	virtual_text = false,
+	float =
+	{
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
+		header = "",
+		prefix = "-> ",
+		source = false
+	},
+})
+
 M.on_attach = function(_, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
@@ -22,6 +35,7 @@ M.on_attach = function(_, bufnr)
   map("n", "<leader>ra", vim.lsp.buf.rename, opts "Rename symbol")
   --
 end
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- disable semantic tokens
 M.on_init = function(client)
@@ -30,6 +44,7 @@ end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
+M.capabilities.textDocument.hover.contentFormat = { "markdown", "plaintext" }
 M.config = {
   on_attach = M.on_attach,
   on_init = M.on_init,

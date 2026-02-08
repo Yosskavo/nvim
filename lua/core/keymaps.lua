@@ -2,6 +2,7 @@
 
 require("core.key.nui")
 
+require("core.key.hover")
 
 -- this is for norm
 require("core.key.norm")

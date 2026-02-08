@@ -55,8 +55,8 @@ function M.setup()
             theme = tokyonight_theme,
             globalstatus = true,
 			disabled_filetypes = {
-				statusline = {"dashboard"}, -- Hides it on the dashboard
-				winbar = {"dashboard",},
+				-- statusline = {"dashboard"}, -- Hides it on the dashboard
+				-- winbar = {"dashboard",},
 			},
         },
         sections = {
