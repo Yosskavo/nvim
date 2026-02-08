@@ -1,7 +1,0 @@
--- return
--- {
--- 	'kevinhwang91/promise-async',
--- 	config = function()
--- 		require("promise-async").setup()
--- 	end
--- }
