@@ -33,7 +33,6 @@ M.on_attach = function(_, bufnr)
 
   -- actions
   map("n", "<leader>ra", vim.lsp.buf.rename, opts "Rename symbol")
-  --
 end
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -43,8 +42,8 @@ M.on_init = function(client)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-
 M.capabilities.textDocument.hover.contentFormat = { "markdown", "plaintext" }
+
 M.config = {
   on_attach = M.on_attach,
   on_init = M.on_init,
