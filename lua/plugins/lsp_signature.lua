@@ -7,6 +7,9 @@ return {
       handler_opts = {
         border = "rounded",  -- 🟠 rounded borders
       },
+		hint_inline = function() return "eol" end,
+		hint_enable = true,
+		hint_prefix = "󰮰 "
     }
   end,
 }
