@@ -1,6 +1,6 @@
 return function()
 	local ui = require("core.theme.ui_mode")
-	local l_bg = "NONE"
+	local l_bg = require("core.theme.colors").my_colors.bg_alt
 	local colors = ui.mode_colors
 
 	-- Create an augroup so we don't duplicate listeners

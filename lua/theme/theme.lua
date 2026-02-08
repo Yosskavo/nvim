@@ -11,9 +11,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		require("theme.dashboard")()
 		require("theme.diagon")()
 		require("theme.barbar")()
+		require("theme.notify")()
     end,
 })
 
+
+require("theme.notify")()
 require("theme.dashboard")()
 require("theme.barbar")()
 require("theme.oper")()
