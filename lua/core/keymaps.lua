@@ -1,5 +1,7 @@
 -----------------------------! this is the keymap system !-------------------------------------------
 
+require("core.key.switcheroo")
+
 require("core.key.nui")
 
 require("core.key.hover")

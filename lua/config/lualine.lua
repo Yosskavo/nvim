@@ -52,7 +52,7 @@ function M.setup()
             component_separators = { left = '|', right = '|'},
             section_separators = { left = '', right = ''},
             icons_enabled = true,
-            theme = tokyonight_theme,
+            -- theme = tokyonight_theme,
             globalstatus = true,
 			disabled_filetypes = {
 				-- statusline = {"dashboard"}, -- Hides it on the dashboard
@@ -69,7 +69,7 @@ function M.setup()
                 {
                     'branch',
                     icon = '',
-                    color = { fg = colors.violet, gui = 'bold' },
+                    -- color = { fg = colors.violet, gui = 'bold' },
                 },
             },
             lualine_c = {
