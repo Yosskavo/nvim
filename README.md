@@ -1,13 +1,13 @@
-<h1 align="centre"> Welcom to Nvim config </h1>
+<h1 align="center"> Welcom to Nvim config </h1>
 
 # requirement 
 
-- nvim v0.11 or higher
-- nerd font (Jet Brain recommanded)
-- lazygit (for the git)
-- fd (optional)
-- rg (optional)
-- clangd (for handling c/c++)
+- [nvim](https://neovim.io/) v0.11 or higher
+- [nerd font](https://www.nerdfonts.com/) (Jet Brain recommanded)
+- [lazygit](https://github.com/jesseduffield/lazygit) (for the git)
+- [fd](https://github.com/sharkdp/fd) (optional)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (optional)
+- [clangd](https://github.com/clangd/clangd) (for handling c/c++)
 
 # installing 
 

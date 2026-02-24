@@ -1,0 +1,4 @@
+return
+{
+	"Yosskavo/shekai.nvim"
+}
