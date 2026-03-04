@@ -2,21 +2,51 @@ return {
   "kevinhwang91/nvim-ufo",
   event = "BufRead",
   config = function()
-    -- These options are REQUIRED for ufo to work properly
-    vim.o.foldcolumn = '1' -- '0' if you don't want the side bar
-    vim.o.foldlevel = 99 -- Using ufo provider needs a large value
+    vim.o.foldcolumn = '1'
+    vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99
     vim.o.foldenable = true
 
-    -- Use Treesitter as the main provider for your C/C++ projects
+    -- Custom handler to display Line Count + Git Blame
+    local handler = function(virtText, lnum, endLnum, width, truncate)
+      local newVirtText = {}
+      local suffix = (" 󰁂 %d lines "):format(endLnum - lnum)
+      local sufWidth = vim.fn.strdisplaywidth(suffix)
+      local targetWidth = width - sufWidth
+      local curWidth = 0
+
+      for _, chunk in ipairs(virtText) do
+        local chunkText = chunk[1]
+        local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+        if targetWidth > curWidth + chunkWidth then
+          table.insert(newVirtText, chunk)
+        else
+          chunkText = truncate(chunkText, targetWidth - curWidth)
+          local hlGroup = chunk[2]
+          table.insert(newVirtText, {chunkText, hlGroup})
+          chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          if curWidth + chunkWidth < targetWidth then
+            suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
+          end
+          break
+        end
+        curWidth = curWidth + chunkWidth
+      end
+
+      -- Get Git Blame info using Gitsigns
+      local bmeta = vim.b.gitsigns_blame_line_dict
+      local author = (bmeta and bmeta.author) and (" • " .. bmeta.author) or ""
+      
+      table.insert(newVirtText, { suffix, "MoreMsg" })
+      table.insert(newVirtText, { author, "Comment" }) -- Shows the name in grey
+      return newVirtText
+    end
+
     require('ufo').setup({
-      provider_selector = function(bufnr, filetype, buftype)
+      fold_virt_text_handler = handler,
+      provider_selector = function()
         return {'treesitter', 'indent'}
       end
     })
-
-    -- Mapping for open/close all (za and zA are built-in and will just work)
-    vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-    vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
   end,
 }

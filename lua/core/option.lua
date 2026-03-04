@@ -16,6 +16,10 @@ vim.opt.expandtab = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- for spelling
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+
 -- this is for line hightlight
 vim.opt.cursorline = true
 

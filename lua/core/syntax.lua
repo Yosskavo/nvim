@@ -145,5 +145,5 @@ local function check_and_run()
 end
 
 -- --- Keymap ---
-vim.keymap.set("n", "<localleader>s", check_and_run, { desc = "Check syntax and Run" })
+vim.keymap.set("n", "<localleader>sc", check_and_run, { desc = "Check syntax and Run" })
 vim.keymap.set("n", "<localleader>e", function() make_qf_float(" Errors ") end, {desc = "error's buffer"})

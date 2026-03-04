@@ -14,6 +14,13 @@ vim.diagnostic.config ({
 	},
 })
 
+local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+for type, icon in pairs(signs) do
+  local name = "DiagnosticSign" .. type
+  vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+end
+
+
 M.on_attach = function(_, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
