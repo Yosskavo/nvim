@@ -27,6 +27,7 @@ git clone https://github.com/Yosskavo/nvim.git  # or git@github.com:yosskavo/nvi
 
 # TODO 
 
+
 - [ ] make a new theme
 - [ ] make cloning easy
 - [ ] doc for the plugins used in this nvim config

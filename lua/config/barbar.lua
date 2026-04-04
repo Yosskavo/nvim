@@ -16,6 +16,7 @@ function M.setup()
 		},
 		icons =
 		{
+			filename_ambiguous = true,
 			button = '',
 			pinned =
 			{

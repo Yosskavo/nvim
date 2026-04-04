@@ -1,0 +1,5 @@
+-- vim.api.nvim_create_autocmd("BufAdd", {
+--   callback = function(args)
+--     vim.api.nvim_buf_set_name(args.buf, vim.fn.fnamemodify(vim.api.nvim_buf_get_name(args.buf), ":t"))
+--   end,
+-- })

@@ -1,3 +1,8 @@
 return {
-    "cacarico/make.nvim"
+    "cacarico/make.nvim",
+	config = function()
+		require("make").setup({
+			close_on_finish = true,
+		})
+	end
 }
