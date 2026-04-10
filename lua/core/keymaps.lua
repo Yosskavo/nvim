@@ -47,3 +47,5 @@ require("core.key.typr")
 
 -- this is dashboard
 require("core.key.dashboard")
+
+require("core.key.notify")

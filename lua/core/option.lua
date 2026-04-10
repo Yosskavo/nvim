@@ -55,3 +55,8 @@ vim.opt.updatetime = 0
 -- vim.o.winborder = "rounded"
 
 
+-- this is for characters
+vim.opt.nrformats:append("alpha")
+
+
+
