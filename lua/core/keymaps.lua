@@ -48,4 +48,8 @@ require("core.key.typr")
 -- this is dashboard
 require("core.key.dashboard")
 
+-- this notify
 require("core.key.notify")
+
+-- this is for terminal opining
+require("core.cmd.term")
