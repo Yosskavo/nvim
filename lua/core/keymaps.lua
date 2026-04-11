@@ -52,4 +52,4 @@ require("core.key.dashboard")
 require("core.key.notify")
 
 -- this is for terminal opining
-require("core.cmd.term")
+require("core.key.term")
