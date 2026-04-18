@@ -20,6 +20,7 @@ vim.opt.relativenumber = true
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
+
 -- this is for line hightlight
 vim.opt.cursorline = true
 
@@ -34,7 +35,7 @@ vim.opt.swapfile = false
 vim.opt.showcmd = true
 
 -- this is for aligned the start
-vim.opt.signcolumn = "auto"
+vim.opt.signcolumn = "yes:1"
 
 -- this is for statusline to be global in all window's
 vim.opt.laststatus = 3
@@ -58,5 +59,6 @@ vim.opt.updatetime = 0
 -- this is for characters
 vim.opt.nrformats:append("alpha")
 
-
+-- for the cursor
+vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr:hor20,o:hor50"
 

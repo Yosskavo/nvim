@@ -44,8 +44,14 @@ return {
 
     require('ufo').setup({
       fold_virt_text_handler = handler,
-      provider_selector = function()
-        return {'treesitter', 'indent'}
+	  close_fold_kinds_for_ft = {
+			oil = {} -- Disable all auto-folding for oil
+		},
+		provider_selector = function()
+			if filetype == 'oil' then
+					return '' -- Return nothing so ufo doesn't attach to Oil
+			end
+			return {'treesitter', 'indent'}
       end
     })
   end,

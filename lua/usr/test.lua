@@ -15,11 +15,6 @@ M.show_rules = function()
         top_align = "center",
       },
     },
-
-
-
-
-
     position = "50%",
     size = {
       width = 60,

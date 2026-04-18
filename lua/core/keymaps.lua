@@ -13,7 +13,7 @@ require("core.key.norm")
 require("core.key.wind")
 
 -- this is for barbar {the bufferline}
-require("core.key.barbar")
+require("core.key.bufferline")
 
 -- this is for lsp
 require("core.key.lsp")

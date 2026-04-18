@@ -2,6 +2,9 @@
 
 # requirement 
 
+
+
+
 - [nvim](https://neovim.io/) v0.11 or higher
 - [nerd font](https://www.nerdfonts.com/) (Jet Brain recommanded)
 - [lazygit](https://github.com/jesseduffield/lazygit) (for the git)
