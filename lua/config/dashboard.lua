@@ -82,7 +82,7 @@ function M.setup()
 					},
 				},
 				vertical_center = false,
-				footer = {"Am Workin Dyin"}
+				footer = {"Am Workin On Dyin"}
 		}
 	})
 end
