@@ -2,13 +2,15 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
+    -- 1. ADD THIS LINE: This gives you thousands of pre-made snippets for HTML/CSS/JS
+    "rafamadriz/friendly-snippets", 
+    
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "onsails/lspkind.nvim",
-    "nvim-tree/nvim-web-devicons",
     {
       "windwp/nvim-autopairs",
       config = function()
@@ -21,7 +23,10 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    require("luasnip.loaders.from_vscode").lazy_load()
+    
+    -- This will now actually load the friendly-snippets you added above
+    require("luasnip.loaders.from_vscode").lazy_load() 
+    
     local formatting = function(entry, vim_item)
       if entry.source.name == "path" then
         local label = entry:get_completion_item().label
@@ -37,6 +42,7 @@ return {
         preset = "default",
       })(entry, vim_item)
     end
+    
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -44,8 +50,8 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-		['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
@@ -56,12 +62,15 @@ return {
         completion = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"}),
         documentation = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"}),
       },
+      
+      -- 2. UPDATE THIS BLOCK: Move luasnip up and fix the path source
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "path", keyword_pattern = [["][^"]*"]] },
-        { name = "buffer" },
-        { name = "luasnip" },
+        { name = "luasnip" }, -- Snippets should be highly prioritized
+        { name = "buffer" },  -- Then words in the current file
+        { name = "path" },    -- Then file paths (removed the restrictive quote pattern)
       }),
+      
       formatting = {
         format = formatting,
       },

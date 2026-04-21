@@ -3,10 +3,15 @@ local M = {}
 function M.setup()
   local mason_lspconfig = require("mason-lspconfig")
   local base = require("config.lspconfig").config
+  local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  base.capabilities = vim.tbl_deep_extend("force", base.capabilities or {}, cmp_capabilities)
 
   local servers = {
     "clangd",
     "lua_ls",
+	"html",
+	"cssls",
     "pyright",
     "ts_ls",
     "rust_analyzer",
@@ -41,6 +46,8 @@ function M.setup()
   vim.lsp.config("pyright", base)
   vim.lsp.config("ts_ls", base)
   vim.lsp.config("rust_analyzer", base)
+  vim.lsp.config("html", base)
+  vim.lsp.config("cssls", base)
 
   -- Enable AFTER configs are defined
   vim.lsp.enable(servers)
