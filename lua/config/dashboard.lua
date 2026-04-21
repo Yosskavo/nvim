@@ -67,6 +67,14 @@ function M.setup()
 						action = "LazyGit",
 					},
 					{
+						icon = '  ',
+						desc = 'New Project           ',
+						key = 'p',
+						key_format = ' [%s]',
+						action = 'NewProject',
+					},
+
+					{
 						icon = '  ',
 						desc = 'config           ',
 						key = 'c',
