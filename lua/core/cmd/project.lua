@@ -85,20 +85,43 @@ re: fclean all
 end
 
 -- ============================================================================
--- 2. STANDALONE COMMANDS
+-- 2. STANDALONE COMMANDS (Updated with Path Selection)
 -- ============================================================================
 
 vim.api.nvim_create_user_command("GenMake", function()
-    local default_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-    vim.ui.input({ prompt = "󱧊 Project Name for Makefile: ", default = default_name }, function(name)
-        if not name or name == "" then return end
-        vim.ui.select({ "c++", "c", "python" }, { prompt = "  Select Language:" }, function(lang)
-            if not lang then return end
-            write_file(vim.fn.getcwd() .. "/Makefile", get_makefile_content(name, lang))
-            vim.notify(" Makefile generated for " .. lang, vim.log.levels.INFO, { title = "GenMake" })
+    -- 1. Ask for the Path
+    vim.ui.input({ 
+        prompt = " Directory to generate Makefile in: ", 
+        default = vim.fn.getcwd(),
+        completion = "dir" -- Enables folder autocomplete
+    }, function(target_path)
+        if not target_path or target_path == "" then return end
+
+        -- Normalize path (expand ~ or relative paths)
+        target_path = vim.fn.fnamemodify(target_path, ":p"):gsub("/$", "")
+
+        -- 2. Ask for Project Name
+        local default_name = vim.fn.fnamemodify(target_path, ":t")
+        vim.ui.input({ prompt = "󱧊 Project Name: ", default = default_name }, function(name)
+            if not name or name == "" then return end
+
+            -- 3. Select Language
+            vim.ui.select({ "c++", "c", "python" }, { prompt = "  Select Language:" }, function(lang)
+                if not lang then return end
+
+                -- Ensure directory exists
+                if vim.fn.isdirectory(target_path) == 0 then
+                    vim.fn.mkdir(target_path, "p")
+                end
+
+                local full_file_path = target_path .. "/Makefile"
+                write_file(full_file_path, get_makefile_content(name, lang))
+                
+                vim.notify(" Makefile generated at " .. target_path, vim.log.levels.INFO, { title = "GenMake" })
+            end)
         end)
     end)
-end, { desc = "Generate a Makefile in the current directory" })
+end, { desc = "Generate a Makefile in a specific directory" })
 
 
 -- ============================================================================
