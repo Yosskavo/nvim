@@ -1,0 +1,21 @@
+return {
+  "sphamba/smear-cursor.nvim",
+  opts = {
+    -- The color of the cursor smear. 
+    -- If not set, it usually tries to match your cursor highlight.
+    cursor_color = "#fab387", 
+
+    -- How fast the smear catches up to the cursor (0 to 1)
+    -- Lower is slower/smoother, higher is snappier.
+    stiffness = 0.6, 
+
+    -- Controls the "tail" length
+    trailing_stiffness = 0.3,
+
+    -- Distance threshold: only smear if the cursor moves more than this many characters
+    distance_stop_animating = 0.1,
+
+    -- Hide the smear when entering Insert mode (common preference)
+    hide_target_hack = false,
+  },
+}
