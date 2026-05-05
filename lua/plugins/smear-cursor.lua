@@ -3,11 +3,11 @@ return {
   opts = {
     -- The color of the cursor smear. 
     -- If not set, it usually tries to match your cursor highlight.
-    cursor_color = "#fab387", 
+    -- cursor_color = "#fab387", 
 
     -- How fast the smear catches up to the cursor (0 to 1)
     -- Lower is slower/smoother, higher is snappier.
-    stiffness = 0.6, 
+    stiffness = 0.6,
 
     -- Controls the "tail" length
     trailing_stiffness = 0.3,
