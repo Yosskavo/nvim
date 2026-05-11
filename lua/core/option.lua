@@ -63,4 +63,4 @@ vim.opt.nrformats:append("alpha")
 vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr:hor20,o:hor50"
 
 -- Turn OFF the hardcoded Neovim default [1/1]
-vim.opt.shortmess:append("S")
+vim.opt.shortmess:append("sS")
