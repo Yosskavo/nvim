@@ -1,7 +1,7 @@
 return
 {
   'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
+  lazy = false,
   priority = 1000,
   -- opts = {theme = "doom"},
   config = function()
