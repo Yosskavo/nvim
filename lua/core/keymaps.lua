@@ -53,3 +53,7 @@ require("core.key.notify")
 
 -- this is for terminal opining
 require("core.key.term")
+
+-- this is yazi 
+require("core.key.yazi")
+

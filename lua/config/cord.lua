@@ -7,7 +7,7 @@ function M.setup()
 		{
 			theme = "catppuccin",
 			flavor = "dark",
-			veiw = "asset",
+			view = "asset",
 		},
 	}
 end
