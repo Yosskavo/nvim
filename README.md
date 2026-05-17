@@ -47,7 +47,7 @@ Then open Neovim and allow lazy.nvim to install plugins.
 - Live grep: `<leader>fg`
 - File explorer (Oil float): `-`
 - LazyGit: `<leader>lg`
-- Open dashboard: `<localleader>d`
+- Open dashboard: `<localleader>d` (default: `\\d`)
 - Theme switcher: `<A-t>`
 
 ## Main Features

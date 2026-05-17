@@ -66,7 +66,7 @@ File: `lua/core/lazy.lua`
   - `lua/plugins`
   - `lua/theme`
 - Uses a first-install theme fallback:
-  - if `stdpath('data')/SelectedTheme` does not exist, startup colorscheme defaults to `shekai`.
+  - if the `SelectedTheme` file in Neovim's data directory (`stdpath('data')`) does not exist, startup colorscheme defaults to `shekai`.
 - Plugin defaults:
   - `lazy = false` for custom plugins
   - `version = false` (track latest commits)
@@ -219,9 +219,9 @@ Custom autocommands are loaded via `lua/core/autocmd.lua`.
   - try opening Dashboard
   - show "Plugins Synced" notification
 
-### Present but currently not loaded
+### Present but currently not loaded (disabled in current load order)
 
-- `lua/core/cmd/theme.lua` exists to persist selected colorscheme to `lua/core/theme_user.lua`, but it is not required in `lua/core/autocmd.lua`.
+- `lua/core/cmd/theme.lua` exists to persist selected colorscheme to `lua/core/theme_user.lua`, but it is currently not loaded because it is not required in `lua/core/autocmd.lua`.
 
 ## 9) LSP, Mason, and Language Support
 
