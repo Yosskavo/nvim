@@ -4,7 +4,7 @@ A Lua-first Neovim configuration focused on:
 
 - modern UI/UX
 - C/C++ + Python workflows
-- 42-school helpers
+- 42-school helpers (Norminette-oriented formatting/rules utilities)
 - project/bootstrap tooling
 - searchable, modular keymaps and command setup
 
@@ -65,4 +65,3 @@ Then open Neovim and allow lazy.nvim to install plugins.
 For complete documentation (all keymaps, commands, autocommands, plugin inventory, and architecture), read:
 
 - [`DOCUMENTATION.md`](./DOCUMENTATION.md)
-

@@ -1,6 +1,6 @@
 # Neovim Configuration Documentation
 
-This document describes the configuration in `/home/runner/work/nvim/nvim`.
+This document describes this Neovim configuration repository (typically installed at `~/.config/nvim`).
 
 ## 1) Overview
 
