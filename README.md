@@ -1,40 +1,68 @@
-<h1 align="center"> Welcom to Nvim config </h1>
+# Yosskavo Neovim Configuration
 
-# requirement 
+A Lua-first Neovim configuration focused on:
 
+- modern UI/UX
+- C/C++ + Python workflows
+- 42-school helpers
+- project/bootstrap tooling
+- searchable, modular keymaps and command setup
 
+## Requirements
 
+- Neovim `0.11+`
+- Nerd Font
+- `git`
+- `lazygit`
+- `fd` (recommended)
+- `ripgrep` (recommended)
+- `clangd`
 
-- [nvim](https://neovim.io/) v0.11 or higher
-- [nerd font](https://www.nerdfonts.com/) (Jet Brain recommanded)
-- [lazygit](https://github.com/jesseduffield/lazygit) (for the git)
-- [fd](https://github.com/sharkdp/fd) (optional)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) (optional)
-- [clangd](https://github.com/clangd/clangd) (for handling c/c++)
+Optional but used by some workflows:
 
-# installing 
+- `gcc`, `g++`
+- `python3`, `flake8`
+- `luac`, `luajit`
+- `c_formatter_42`, `norminette`
+- `make`
 
+## Install
 
-```sh
-# go to the config folder
-cd ~/.config/
+```bash
+cd ~/.config
+mv nvim nvim-backup   # optional
 
-# make a back-up for your current nvim config
-mv nvim nvim-cp
-
-# clone our config
-git clone https://github.com/Yosskavo/nvim.git  # or git@github.com:yosskavo/nvim.git if you prefer ssh one
-
+git clone https://github.com/Yosskavo/nvim.git
+# or
+git clone git@github.com:Yosskavo/nvim.git
 ```
 
+Then open Neovim and allow lazy.nvim to install plugins.
 
-# TODO 
+## Quick Start
 
+- Leader key: `<Space>`
+- Local leader: `\\`
+- Find files: `<leader><leader>`
+- Live grep: `<leader>fg`
+- File explorer (Oil float): `-`
+- LazyGit: `<leader>lg`
+- Open dashboard: `<localleader>d`
+- Theme switcher: `<A-t>`
 
-- [x] make a new theme : [theme](https://github.com/yosskavo/shekai.nvim)
-- [x] make cloning easy
-- [ ] doc for the plugins used in this nvim config
-- [x] make a easy to creat project \( .gitignore .clangd .git  \)
+## Main Features
 
+- Modular core architecture (`lua/core`, `lua/core/key`, `lua/core/cmd`)
+- LSP + Mason + nvim-cmp stack
+- Telescope + fzf-native + live_grep_args
+- Dashboard, bufferline, lualine, noice, notify
+- Troubleshooting UI via Trouble and diagnostics floats
+- Project and Makefile generators (`:NewProject`, `:GenMake`)
+- Interactive repository clone helper (`:Clone`)
 
+## Full Documentation
+
+For complete documentation (all keymaps, commands, autocommands, plugin inventory, and architecture), read:
+
+- [`DOCUMENTATION.md`](./DOCUMENTATION.md)
 
