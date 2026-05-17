@@ -32,9 +32,9 @@ git clone https://github.com/Yosskavo/nvim.git  # or git@github.com:yosskavo/nvi
 
 
 - [x] make a new theme : [theme](https://github.com/yosskavo/shekai.nvim)
-- [ ] make cloning easy
+- [x] make cloning easy
 - [ ] doc for the plugins used in this nvim config
-- [ ] make a easy to creat project \( .gitignore .clangd .git  \)
+- [x] make a easy to creat project \( .gitignore .clangd .git  \)
 
 
 
