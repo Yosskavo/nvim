@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>st", ":Switcheroo<CR>", {silent = true, desc = "siwtch the theme"})
+vim.keymap.set("n", "<A-t>", ":Switcheroo<CR>", {silent = true, desc = "siwtch the theme"})

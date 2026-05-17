@@ -1,5 +1,5 @@
 -- opening Yazi
-vim.keymap.set("n", "<A-t>", "<Cmd>Yazi<CR>", { desc = "open Yazi" })
+vim.keymap.set("n", "<A-y>", "<Cmd>Yazi<CR>", { desc = "open Yazi" })
 
 
 
