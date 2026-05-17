@@ -1,29 +1,5 @@
--- this is for color scheme
-vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "*",
-    callback = function()
-		require("theme.oper")()
-		require("theme.background")()
-		require("theme.float_wind")()
-		require("theme.yank")()
-		require("theme.line")()
-		require("theme.lang_theme")()
-		require("theme.dashboard")()
-		require("theme.diagon")()
-		require("theme.barbar")()
-		require("theme.notify")()
-    end,
-})
+-- 1. Locate the file where Switcheroo saves your selection
 
-
-require("theme.notify")()
-require("theme.dashboard")()
-require("theme.barbar")()
-require("theme.oper")()
-require("theme.background")()
-require("theme.float_wind")()
-require("theme.yank")()
-require("theme.line")()
-require("theme.lang_theme")()
-require("theme.diagon")()
-require("theme.signature")()
+return {
+  -- Configure LazyVim to safely use the fallback if Switcheroo is empty
+}

@@ -31,6 +31,21 @@ function M.setup()
 			columns = 1,
 		},
 	}
+	require("which-key").add({
+	  { "<leader>s", group = "Screen" },
+      { "<leader>b", group = "Buffers" },
+      { "<leader>f", group = "Find/Files" },
+      { "<leader>t", group = "terminal" },
+      { "<leader>l", group = "lazy" },
+      { "<leader>m", group = "makefile" },
+      { "<leader>h", group = "help" },
+      { "<leader>x", group = "lsp" },
+      { "<leader>w", group = "lsp workflow" },
+      { "<localleader>f", group = "formatting" },
+      { "<localleader>s", group = "formatting" },
+      { "<localleader>s", group = "typr" },
+
+	})
 end
 
 return M

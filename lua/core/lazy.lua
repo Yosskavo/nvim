@@ -15,17 +15,40 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+local data_path = vim.fn.stdpath("data")
+local switcheroo_file = data_path .. "/SelectedTheme" -- Or "/switcheroo.json" depending on your fork
+
+local function get_initial_theme()
+  local file = io.open(switcheroo_file, "r")
+  if file then
+    file:close()
+    -- Switcheroo's save file exists; let it load the theme automatically
+    return nil
+  else
+    -- FIRST INSTALL: No file exists yet, safe to force your pristine default choice
+    return "shekai" -- Change this to whatever colorscheme name you want first
+  end
+end
+
+local initial_theme = get_initial_theme()
+
+
+
 require("lazy").setup({
 	opts =
 	{
 		autocmds = false,
-		keymaps = false
+		keymaps = false,
+		colorscheme = initial_theme,
+
 	},
 	spec = {
 		-- add LazyVim and import its plugins
 		-- { "LazyVim/LazyVim" },
 		-- import/override with your plugins
-		{ import = "plugins" },
+		{ import = "plugins"},
+		{ import = "theme"},
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
