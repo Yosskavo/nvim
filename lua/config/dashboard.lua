@@ -146,6 +146,20 @@ function M.setup()
                         key_format = ' [%s]',
                         action = 'cd ~/.config/nvim | Telescope find_files',
                     },
+					{
+						icon = '󰚰  ',
+						desc = 'Update config         ',
+						key = 'i',
+						key_format = ' [%s]',
+						action = 'InvertedUpdate',
+					},
+					{
+						icon = '󱂷 ',
+						desc = 'about the config     ',
+						key = 'a',
+						key_format = ' [%s]',
+						action = 'e ~/.config/nvim/README.md',
+					},
                     {
                         icon = '  ',
                         desc = 'Quit           ',
