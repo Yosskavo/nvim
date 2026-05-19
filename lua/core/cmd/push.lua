@@ -45,6 +45,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         -- Wait 4 seconds after opening Neovim. 
         -- This ensures it doesn't overlap with the 2-second Pull checker!
-        vim.defer_fn(check_unpushed_config, 0)
+        vim.defer_fn(check_unpushed_config, 2000)
     end,
 })
