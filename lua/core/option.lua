@@ -64,3 +64,6 @@ vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr:hor20,o:hor50"
 
 -- Turn OFF the hardcoded Neovim default [1/1]
 vim.opt.shortmess:append("sS")
+
+-- Allow the cursor to move into empty space in Visual Block mode
+vim.opt.virtualedit = "block"

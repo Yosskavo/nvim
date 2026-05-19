@@ -30,7 +30,6 @@ return {
         folder_closed = " ",
         folder_open = " ",
         folder_empty = "󰜮",
-        -- CRUCIAL: This tells Neo-tree to fetch your customized file icons!
         default = "󰈚 ",
         highlight = nil,
       },
