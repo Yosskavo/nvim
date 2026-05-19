@@ -1,4 +1,5 @@
 require("core.cmd.autosave")
+require("core.cmd.pull")
 require("core.cmd.close")
 require("core.cmd.treesitter")
 require("core.cmd.lsp")
