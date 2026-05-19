@@ -1,6 +1,7 @@
 return {
   "ray-x/lsp_signature.nvim",
   event = "VeryLazy",
+  priority = 1000, -- Load before EVERYTHING else
   config = function()
     require("lsp_signature").setup {
       bind = true,

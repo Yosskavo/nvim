@@ -1,10 +1,10 @@
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
+  priority = 1000, -- Load before EVERYTHING else
   dependencies = {
     -- 1. ADD THIS LINE: This gives you thousands of pre-made snippets for HTML/CSS/JS
-    "rafamadriz/friendly-snippets", 
-    
+    "rafamadriz/friendly-snippets",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
@@ -23,10 +23,10 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    
+
     -- This will now actually load the friendly-snippets you added above
     require("luasnip.loaders.from_vscode").lazy_load() 
-    
+
     local formatting = function(entry, vim_item)
       if entry.source.name == "path" then
         local label = entry:get_completion_item().label
