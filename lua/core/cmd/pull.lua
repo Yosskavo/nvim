@@ -58,9 +58,10 @@ end
 -- ==========================================
 vim.api.nvim_create_autocmd("VimEnter", {
     pattern = "*",
+	once = true,
     callback = function()
         -- Wait 2 seconds after Neovim opens before checking.
         -- This guarantees the update check won't slow down your startup time!
-        vim.defer_fn(check_for_updates, 2000)
+        vim.defer_fn(check_for_updates, 0)
     end,
 })
