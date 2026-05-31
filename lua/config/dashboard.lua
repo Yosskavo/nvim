@@ -154,7 +154,7 @@ function M.setup()
 						action = 'InvertedUpdate',
 					},
 					{
-						icon = '󱂷 ',
+						icon = '󱂷  ',
 						desc = 'about the config     ',
 						key = 'a',
 						key_format = ' [%s]',
