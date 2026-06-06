@@ -1,4 +1,4 @@
-# Yosskavo Neovim Configuration
+# Inverted-Nvim
 
 A Lua-first Neovim configuration focused on:
 
@@ -10,7 +10,7 @@ A Lua-first Neovim configuration focused on:
 
 ## Requirements
 
-- Neovim `0.11+`
+- Neovim `0.12+`
 - Nerd Font
 - `git`
 - `lazygit`
