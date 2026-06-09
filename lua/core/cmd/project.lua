@@ -18,6 +18,7 @@ local function get_makefile_content(name, lang)
 C_GREEN = \033[0;32m
 C_BLUE  = \033[0;34m
 C_RED   = \033[0;31m
+C_PURPLE = \033[1;35m
 C_RESET = \033[0m
 
 NAME = %s
@@ -37,8 +38,14 @@ clean:
 	@find . -type f -name '*.pyc' -exec rm -v {} + 2>/dev/null || true
 
 fclean: clean
+
 re: fclean all
-.PHONY: all run clean fclean re
+
+run : re all
+	@echo "$(C_PURPLE)  Lunching executable $(NAME)...$(C_RESET)"
+	@./$(NAME)
+
+.PHONY: all run clean fclean re run
 ]], name)
     else
         local cc = (lang == "c++") and "c++" or "cc"
@@ -52,6 +59,7 @@ C_YELLOW = \033[0;33m
 C_BLUE   = \033[0;34m
 C_RED    = \033[0;31m
 C_RESET  = \033[0m
+C_PURPLE = \033[1;35m
 
 NAME = %s
 CC = %s
@@ -77,6 +85,10 @@ clean:
 fclean: clean
 	@echo "$(C_RED)  Removing executable $(NAME)...$(C_RESET)"
 	@rm -fv $(NAME)
+
+run : re all
+	@echo "$(C_PURPLE)  Lunching executable $(NAME)...$(C_RESET)"
+	@./$(NAME)
 
 re: fclean all
 .PHONY: all clean fclean re
