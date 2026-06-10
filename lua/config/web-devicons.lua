@@ -15,7 +15,7 @@ function M.setup()
     -- Add your personal icon overrides here
     override = {
       zsh = {
-        icon = "",
+        icon = " ",
         color = "#428850",
         name = "Zsh"
       }
@@ -23,12 +23,12 @@ function M.setup()
 
     override_by_filename = {
       [".gitignore"] = {
-        icon = "",
+        icon = " ",
         color = "#f1502f",
         name = "Gitignore"
       },
       ["Makefile"] = {
-        icon = "",
+        icon = " ",
         color = "#6d8086",
         name = "Makefile"
       }
@@ -36,17 +36,27 @@ function M.setup()
 
     override_by_extension = {
       ["log"] = {
-        icon = "",
+        icon = " ",
         color = "#81e043",
         name = "Log"
       },
+      ["tpp"] = {
+        icon = "󰰤 ",
+        color = "#81e043",
+        name = "Log"
+      },
+      ["ipp"] = {
+        icon = "󰬐 ",
+        color = "#519aba",
+        name = "Cpp"
+      },
       ["cpp"] = {
-        icon = "󰙲",
+        icon = "󰙲 ",
         color = "#519aba",
         name = "Cpp"
       },
       ["hpp"] = {
-        icon = "",
+        icon = " ",
         color = "#a074c4",
         name = "Hpp"
       }
