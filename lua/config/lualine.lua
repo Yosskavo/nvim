@@ -28,8 +28,21 @@ function M.setup()
             lualine_c = {
                 {
                     'filename',
+					fmt = function(str)
+					  -- Check if the current buffer's filetype is a toggleterm
+					  if vim.bo.filetype == "toggleterm" then
+						return " Terminal" -- You can remove the icon if you just want text
+					 elseif vim.bo.filetype == "neo-tree" then
+					 	return "Neo-tree"
+					 elseif vim.bo.filetype == "oil" then
+					 	return "Oil"
+					  end
+					  -- If it's a normal file, just return the normal filename
+					  return str
+					end,
                     file_status = true,
-                    path = 1,
+					newfile_status = true,
+                    path = 0,
                     symbols = {
                         modified = "󱇨 ",
                         readonly = "󱀰 ",
@@ -41,7 +54,7 @@ function M.setup()
 			lualine_z =
 			{
 				{
-					'searchcount'
+					'searchcount',
 				}
 			},
 			lualine_y =
@@ -62,6 +75,9 @@ function M.setup()
 					'filetype',
 					colored = true,
 					icon_only = true,
+				},
+				{
+					'selectioncount'
 				}
 			},
 			-- lualine_z = {'username'},
