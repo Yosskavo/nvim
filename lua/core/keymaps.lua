@@ -57,3 +57,6 @@ require("core.key.term")
 -- this is yazi 
 require("core.key.yazi")
 
+
+require("core.key.glance")
+

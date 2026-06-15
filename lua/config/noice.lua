@@ -16,9 +16,9 @@ function M.setup()
 		  -- Change the icon for the standard ":" command
 		  cmdline = { pattern = "^:", icon = " ", lang = "vim" },
 		  -- Change the icon for search "/"
-		  search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+		  search_down = { kind = "search", pattern = "^/", icon = "  ", lang = "regex" },
 		  -- Change the icon for search "?"
-		  search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+		  search_up = { kind = "search", pattern = "^%?", icon = "  ", lang = "regex" },
 		  -- Change the icon for shell commands ":"
 		  filter = { pattern = "^:%s*!", icon = " ", lang = "zsh" },
 		},

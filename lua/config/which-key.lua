@@ -41,6 +41,7 @@ function M.setup()
       { "<leader>h", group = "help" },
       { "<leader>x", group = "lsp" },
       { "<leader>w", group = "lsp workflow" },
+	  { "<leader>g", group = "glance"},
       { "<localleader>f", group = "formatting" },
       { "<localleader>s", group = "formatting" },
       { "<localleader>s", group = "typr" },
