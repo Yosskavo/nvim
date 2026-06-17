@@ -225,13 +225,7 @@ Plugins are loaded via `lazy.nvim`. Each plugin file specifies the repository, l
 ### `nui.lua` (MunifTanjim/nui.nvim)
 - **What it does:** Enhances standard Neovim capabilities.
 
-### `nvim-cmp.lua` ( 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
-    -- We do NOT call fallback() here so the menu refuses to move with arrows
-  end
-end
-
-return {
-  "hrsh7th/nvim-cmp)
+### `nvim-cmp.lua` (hrsh7th/nvim-cmp)
 - **What it does:** Autocompletion engine. Configured to use LSP, snippets, and buffer sources. It features a hard-mode that prevents using arrows to enforce `C-n`/`C-p`.
 - **Config/Keys:** Includes custom config.
 
@@ -243,10 +237,7 @@ return {
 - **What it does:** Enhances standard Neovim capabilities.
 - **Config/Keys:** Includes custom config.
 
-### `plenary.lua` (library" plugin that provides a collection of Lua functions used by many other popular plugins
-return
-{
-  "nvim-lua/plenary.nvim)
+### `plenary.lua` (nvim-lua/plenary.nvim)
 - **What it does:** Enhances standard Neovim capabilities.
 
 ### `pomo.lua` (bxrne/pomo.nvim)
