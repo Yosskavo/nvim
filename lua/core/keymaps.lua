@@ -60,3 +60,4 @@ require("core.key.yazi")
 
 require("core.key.glance")
 
+require("core.key.arrows")
