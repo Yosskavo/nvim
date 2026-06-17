@@ -65,6 +65,7 @@ Then open Neovim and allow lazy.nvim to install plugins.
 For complete documentation (all keymaps, commands, autocommands, plugin inventory, and architecture), read:
 
 - [`docs/README.md`](./docs/README.md)
+- [`docs/FULL_DOCUMENTATION.md`](./docs/FULL_DOCUMENTATION.md)
 
 ## Next Target
 
