@@ -2,6 +2,13 @@ local M = {}
 
 function M.setup()
 
+local function hard_mode_hint(key, alternative)
+  return function()
+    -- This triggers your Noice popup without moving the cursor
+    vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
+  end
+end
+
 require('telescope').setup{
     defaults = {
 		-- path_display = function()
@@ -31,8 +38,24 @@ require('telescope').setup{
               height = 0.80,
         },
         mappings = {
-            n = { ["q"] = require("telescope.actions").close },
-            i = { ["<C-h>"] = "which_key"},
+            n =
+			{
+				["q"] = require("telescope.actions").close,
+				["<Up>"]    = hard_mode_hint("<Up>", "<C-p>"),
+				["<Down>"]  = hard_mode_hint("<Down>", "<C-n>"),
+				["<Left>"]  = hard_mode_hint("<Left>", "Home row"),
+				["<Right>"] = hard_mode_hint("<Right>", "Home row"),
+			},
+
+            i =
+			{
+				["<C-h>"] = "which_key",
+				["<Up>"]    = hard_mode_hint("<Up>", "k"),
+				["<Down>"]  = hard_mode_hint("<Down>", "j"),
+				["<Left>"]  = hard_mode_hint("<Left>", "h"),
+				["<Right>"] = hard_mode_hint("<Right>", "l"),
+			},
+
         },
     },
     pickers = {
