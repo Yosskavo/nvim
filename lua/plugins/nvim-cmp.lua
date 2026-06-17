@@ -1,3 +1,10 @@
+local function hard_mode_hint(key, alternative)
+  return function(fallback)
+    vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
+    -- We do NOT call fallback() here so the menu refuses to move with arrows
+  end
+end
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
@@ -42,7 +49,7 @@ return {
         preset = "default",
       })(entry, vim_item)
     end
-    
+
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -57,12 +64,18 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
+		['<Up>']    = cmp.mapping(hard_mode_hint('<Up>', '<C-k>'), { 'i', 'c' }),
+		['<Down>']  = cmp.mapping(hard_mode_hint('<Down>', '<C-j>'), { 'i', 'c' }),
+		['<Left>']  = cmp.mapping(hard_mode_hint('<Left>', 'h'), { 'i', 'c' }),
+		['<Right>'] = cmp.mapping(hard_mode_hint('<Right>', 'l'), { 'i', 'c' }),
+		-- ['<Tab>']    = cmp.mapping(hard_mode_hint('<Up>', '<C-j>'), { 'i', 'c' }),
+		-- ['<S-Tab>']  = cmp.mapping(hard_mode_hint('<Down>', '<C-k>'), { 'i', 'c' }),
       }),
       window = {
         completion = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"}),
         documentation = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"}),
       },
-      
+
       -- 2. UPDATE THIS BLOCK: Move luasnip up and fix the path source
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
