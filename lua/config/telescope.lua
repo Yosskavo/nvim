@@ -41,19 +41,19 @@ require('telescope').setup{
             n =
 			{
 				["q"] = require("telescope.actions").close,
-				["<Up>"]    = hard_mode_hint("<Up>", "<C-p>"),
-				["<Down>"]  = hard_mode_hint("<Down>", "<C-n>"),
-				["<Left>"]  = hard_mode_hint("<Left>", "Home row"),
-				["<Right>"] = hard_mode_hint("<Right>", "Home row"),
+				["<Up>"]    = hard_mode_hint("<Up>", "k"),
+				["<Down>"]  = hard_mode_hint("<Down>", "j"),
+				["<Left>"]  = hard_mode_hint("<Left>", "h"),
+				["<Right>"] = hard_mode_hint("<Right>", "l"),
 			},
 
             i =
 			{
 				["<C-h>"] = "which_key",
-				["<Up>"]    = hard_mode_hint("<Up>", "k"),
-				["<Down>"]  = hard_mode_hint("<Down>", "j"),
-				["<Left>"]  = hard_mode_hint("<Left>", "h"),
-				["<Right>"] = hard_mode_hint("<Right>", "l"),
+				["<Up>"]    = hard_mode_hint("<Up>", "Esc then k"),
+				["<Down>"]  = hard_mode_hint("<Down>", "Esc then j"),
+				["<Left>"]  = hard_mode_hint("<Left>", "Esc then l"),
+				["<Right>"] = hard_mode_hint("<Right>", "Esc then h"),
 			},
 
         },
