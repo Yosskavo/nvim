@@ -145,11 +145,11 @@ vim.api.nvim_create_user_command("NewProject", function()
     -- Helper: Writes all the boilerplate files
     local function write_boilerplate(path, name, lang, build_sys)
         if lang == "python" then
-            write_file(path .. "/.gitignore", "__pycache__/\n*.pyc\n.venv/\nvenv/\n")
+            write_file(path .. "/.gitignore", "__pycache__/\n*.pyc\n.venv/\nvenv/\n" .. name .. "\n")
             write_file(path .. "/requirements.txt", "# Add your python dependencies here\n")
             write_file(path .. "/main.py", "def main():\n    print(\"Hello from " .. name .. "!\")\n\nif __name__ == \"__main__\":\n    main()\n")
         else
-            write_file(path .. "/.gitignore", "*.o\n*.out\n*.a\n*.so\n*.exe\n.cache/\ncompile_commands.json\n")
+            write_file(path .. "/.gitignore", "*.o\n*.out\n*.a\n*.so\n*.exe\n.cache/\ncompile_commands.json\n" .. name .. "\n")
             local ext = (lang == "c++") and "cpp" or "c"
             local std_flag = (lang == "c++") and ", -std=c++98" or ""
             local clangd = string.format("CompileFlags:\n  Add: [-Wall, -Wextra, -Werror%s]\n", std_flag)
