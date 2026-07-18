@@ -10,11 +10,11 @@ function M.setup()
   local servers = {
     "clangd",
     "lua_ls",
-	"html",
-	"cssls",
+	-- "html",
+	-- "cssls",
     "pyright",
-    "ts_ls",
-    "rust_analyzer",
+    -- "ts_ls",
+    -- "rust_analyzer",
   }
 
   mason_lspconfig.setup({
@@ -45,9 +45,9 @@ function M.setup()
   -- Everything else (no extra config)
   vim.lsp.config("pyright", base)
   vim.lsp.config("ts_ls", base)
-  vim.lsp.config("rust_analyzer", base)
-  vim.lsp.config("html", base)
-  vim.lsp.config("cssls", base)
+  -- vim.lsp.config("rust_analyzer", base)
+  -- vim.lsp.config("html", base)
+  -- vim.lsp.config("cssls", base)
 
   -- Enable AFTER configs are defined
   vim.lsp.enable(servers)

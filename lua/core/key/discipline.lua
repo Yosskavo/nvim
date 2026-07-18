@@ -1,13 +1,13 @@
 -- lua/keys/discipline.lua
-local opts = { noremap = true, silent = true }
-
-local function hard_mode_hint(key, alternative)
-  return function()
-    vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
-  end
-end
-
-vim.keymap.set({'n', 'v', 'i', 'c'}, '<Up>', hard_mode_hint('<Up>', 'k'), opts)
-vim.keymap.set({'n', 'v', 'i', 'c'}, '<Down>', hard_mode_hint('<Down>', 'j'), opts)
-vim.keymap.set({'n', 'v', 'i', 'c'}, '<Left>', hard_mode_hint('<Left>', 'h'), opts)
-vim.keymap.set({'n', 'v', 'i', 'c'}, '<Right>', hard_mode_hint('<Right>', 'l'), opts)
+-- local opts = { noremap = true, silent = true }
+--
+-- local function hard_mode_hint(key, alternative)
+--   return function()
+--     vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
+--   end
+-- end
+--
+-- vim.keymap.set({'n', 'v', 'i', 'c'}, '<Up>', hard_mode_hint('<Up>', 'k'), opts)
+-- vim.keymap.set({'n', 'v', 'i', 'c'}, '<Down>', hard_mode_hint('<Down>', 'j'), opts)
+-- vim.keymap.set({'n', 'v', 'i', 'c'}, '<Left>', hard_mode_hint('<Left>', 'h'), opts)
+-- vim.keymap.set({'n', 'v', 'i', 'c'}, '<Right>', hard_mode_hint('<Right>', 'l'), opts)
