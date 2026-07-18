@@ -194,6 +194,7 @@ function M.setup()
                 vertical_center = false,
                 footer =
 				{
+					"You can change theme by <A-t>",
 					"Am Workin On Dyin",
 					" ", -- Adds a clean blank line separator
                     "  " .. os.date("%A, %B %d, %Y — %I:%M %p") -- Outputs: Sunday, May 17, 2026 — 08:46 PM}
