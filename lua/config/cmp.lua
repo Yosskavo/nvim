@@ -1,9 +1,9 @@
 -- lua/config/cmp.lua
-local function hard_mode_hint(key, alternative)
-  return function(fallback)
-    vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
-  end
-end
+-- local function hard_mode_hint(key, alternative)
+--   return function(fallback)
+--     vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
+--   end
+-- end
 
 return function(_, opts)
   local cmp = require("cmp")
@@ -39,10 +39,10 @@ return function(_, opts)
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      ['<Up>']    = cmp.mapping(hard_mode_hint('<Up>', '<C-k>'), { 'i', 'c' }),
-      ['<Down>']  = cmp.mapping(hard_mode_hint('<Down>', '<C-j>'), { 'i', 'c' }),
-      ['<Left>']  = cmp.mapping(hard_mode_hint('<Left>', 'h'), { 'i', 'c' }),
-      ['<Right>'] = cmp.mapping(hard_mode_hint('<Right>', 'l'), { 'i', 'c' }),
+      -- ['<Up>']    = cmp.mapping(hard_mode_hint('<Up>', '<C-k>'), { 'i', 'c' }),
+      -- ['<Down>']  = cmp.mapping(hard_mode_hint('<Down>', '<C-j>'), { 'i', 'c' }),
+      -- ['<Left>']  = cmp.mapping(hard_mode_hint('<Left>', 'h'), { 'i', 'c' }),
+      -- ['<Right>'] = cmp.mapping(hard_mode_hint('<Right>', 'l'), { 'i', 'c' }),
     }),
     window = {
       completion = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"}),

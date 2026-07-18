@@ -2,12 +2,12 @@ local M = {}
 
 function M.setup()
 
-local function hard_mode_hint(key, alternative)
-  return function()
-    -- This triggers your Noice popup without moving the cursor
-    vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
-  end
-end
+-- local function hard_mode_hint(key, alternative)
+--   return function()
+--     -- This triggers your Noice popup without moving the cursor
+--     vim.notify(" 󰰍  Use '" .. alternative .. "' instead of " .. key, vim.log.levels.WARN, { title = "Discipline" })
+--   end
+-- end
 
 require('telescope').setup{
     defaults = {
@@ -41,19 +41,19 @@ require('telescope').setup{
             n =
 			{
 				["q"] = require("telescope.actions").close,
-				["<Up>"]    = hard_mode_hint("<Up>", "k"),
-				["<Down>"]  = hard_mode_hint("<Down>", "j"),
-				["<Left>"]  = hard_mode_hint("<Left>", "h"),
-				["<Right>"] = hard_mode_hint("<Right>", "l"),
+				-- ["<Up>"]    = hard_mode_hint("<Up>", "k"),
+				-- ["<Down>"]  = hard_mode_hint("<Down>", "j"),
+				-- ["<Left>"]  = hard_mode_hint("<Left>", "h"),
+				-- ["<Right>"] = hard_mode_hint("<Right>", "l"),
 			},
 
             i =
 			{
 				["<C-h>"] = "which_key",
-				["<Up>"]    = hard_mode_hint("<Up>", "Esc then k"),
-				["<Down>"]  = hard_mode_hint("<Down>", "Esc then j"),
-				["<Left>"]  = hard_mode_hint("<Left>", "Esc then l"),
-				["<Right>"] = hard_mode_hint("<Right>", "Esc then h"),
+				-- ["<Up>"]    = hard_mode_hint("<Up>", "Esc then k"),
+				-- ["<Down>"]  = hard_mode_hint("<Down>", "Esc then j"),
+				-- ["<Left>"]  = hard_mode_hint("<Left>", "Esc then l"),
+				-- ["<Right>"] = hard_mode_hint("<Right>", "Esc then h"),
 			},
 
         },
