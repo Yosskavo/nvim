@@ -1,7 +1,7 @@
+-- lua/usr/man.lua
 return function()
-local topic = vim.fn.expand("<cword>")
+  local topic = vim.fn.expand("<cword>")
   
-  -- Check if man page exists
   if os.execute("man -w " .. topic .. " > /dev/null 2>&1") ~= 0 then
     vim.notify("Manual for '" .. topic .. "' not found", 3)
     return
@@ -23,27 +23,27 @@ local topic = vim.fn.expand("<cword>")
     title_pos = "center",
   })
 
-  -- --- THE CRITICAL FIX ---
-  -- 1. Set the filetype FIRST so :Man doesn't split
-  vim.bo[bufnr].filetype = "man"
-  
-  -- 2. Use the modern 0.11 API for other settings
-  vim.api.nvim_set_option_value("buftype", "nofile", { buf = bufnr })
   vim.wo[win_id].winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder"
 
-  -- 3. Execute the command directly in the buffer
-  vim.api.nvim_buf_call(bufnr, function()
-    -- Use the '!' or 'silent' to avoid extra redraws
-    vim.cmd("silent Man " .. topic)
-    
-    -- Map 'q' to close this specific window
-    vim.keymap.set("n", "q", function()
-      if vim.api.nvim_win_is_valid(win_id) then
-        vim.api.nvim_win_close(win_id, true)
-      end
-    end, { buffer = bufnr })
-  end)
-end
+  -- 1. Force the editor's focus strictly into the floating window
+  vim.api.nvim_set_current_win(win_id)
+  
+  -- 2. THE FIX: Use Neovim's internal man:// protocol.
+  -- This intercepts the edit command, compiles the man page with full syntax
+  -- highlighting, and injects it straight into the active floating window.
+  vim.cmd("silent edit man://" .. topic)
+  
+  -- 3. Because :edit deletes our empty scratch buffer and replaces it with 
+  -- the actual man page buffer, we must grab the NEW buffer ID.
+  local man_bufnr = vim.api.nvim_get_current_buf()
+  
+  -- Keep the buffer clean from your standard buffer line (like barbar)
+  vim.api.nvim_set_option_value("buflisted", false, { buf = man_bufnr })
 
--- Your new leader keymap
--- vim.keymap.set("n", "<leader>m", native_man_float, { desc = "Native Man Float" })
+  -- 4. Map 'q' to close the float using the correct new buffer ID
+  vim.keymap.set("n", "q", function()
+    if vim.api.nvim_win_is_valid(win_id) then
+      vim.api.nvim_win_close(win_id, true)
+    end
+  end, { buffer = man_bufnr, silent = true })
+end

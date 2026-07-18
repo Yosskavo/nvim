@@ -1,22 +1,15 @@
--- Trigger the Norminette helper with <leader>nh (Norm Help)
+-- lua/keys/manual.lua
+local opts = { noremap = true, silent = true }
+
 vim.keymap.set("n", "<localleader>m", function()
-  -- Get the extension of the current file
   local extension = vim.fn.expand("%:e")
 
   if extension == "cpp" or extension == "hpp" then
-    -- Run your Norminette/Rules logic for C++
     require('cppman').open_cppman_for(vim.fn.expand("<cword>"))
   elseif extension == "c" or extension == "h" then
-    -- Run your Smart Man Popup for C
+    -- This calls the function returned by lua/usr/man.lua
     require("usr.man")()
   else
-    -- Optional: Notify if the filetype isn't supported
     vim.notify("No special manual/rules for ." .. extension, 2)
   end
-end, { desc = "Dynamic Manual/Norm Rules" })
-
-
-
-vim.keymap.set("n", "<leader>hn", function()
-	require("usr.norm")()
-end, { desc = "Normenette rules" })
+end, vim.tbl_extend("force", opts, { desc = "Dynamic Manual/Norm Rules" }))
