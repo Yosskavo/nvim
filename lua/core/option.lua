@@ -67,3 +67,4 @@ vim.opt.shortmess:append("c")
 
 -- Allow the cursor to move into empty space in Visual Block mode
 vim.opt.virtualedit = "block"
+vim.deprecate = function() end
