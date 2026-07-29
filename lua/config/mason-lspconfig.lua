@@ -13,6 +13,7 @@ function M.setup()
 	-- "html",
 	-- "cssls",
     "pyright",
+	"bashls",
     -- "ts_ls",
     -- "rust_analyzer",
   }
@@ -35,6 +36,22 @@ function M.setup()
       },
     },
   }))
+
+-- Define the server configuration natively
+vim.lsp.config('bashls', {
+    cmd = { 'bash-language-server', 'start' },
+    filetypes = { 'sh', 'bash' },
+    -- root_markers replaces the old root_dir function. 
+    -- It automatically finds the workspace root by looking upward for these files.
+    root_markers = { '.git', '.bashrc' },
+    settings = {
+        bashIde = {
+            globPattern = "**/*@(.sh|.inc|.bash|.command)"
+        }
+    }
+})
+
+-- Tell Neovim to automatically attach it whenever a matching filetype is opened
 
   -- Clangd
   vim.lsp.config("clangd", vim.tbl_extend("force", base, {
