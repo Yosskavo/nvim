@@ -9,6 +9,7 @@ function M.setup()
 			["q"] = "actions.close",
 			["<c-->"] = "actions.cd",
 			["<Esc>"] = "actions.close",
+			["gh"] = "actions.toggle_hidden",
 		},
 		columns =
 		{
