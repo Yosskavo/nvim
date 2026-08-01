@@ -56,7 +56,9 @@ M.on_init = function(client)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.hover.contentFormat = { "markdown", "plaintext" }
+if M.capabilities.textDocument and M.capabilities.textDocument.hover then
+  M.capabilities.textDocument.hover.contentFormat = { "markdown", "plaintext" }
+end
 
 M.config = {
   on_attach = M.on_attach,
@@ -65,3 +67,4 @@ M.config = {
 }
 
 return M
+

@@ -69,4 +69,4 @@ require("core.key.neogen")
 require("core.key.flash")
 require("core.key.spotify")
 require("core.key.pomo")
-require("core.key.hover")
+
