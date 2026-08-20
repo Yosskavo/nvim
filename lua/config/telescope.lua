@@ -26,6 +26,7 @@ require('telescope').setup{
 		-- 	  return string.format("%s (%s)", name_no_ext, dir)
 		-- 	end
 		-- end,
+        file_ignore_patterns = { "%.o$", "%.a$", "%.out$", "%.pyc$", "^__pycache__/", "^%.git/" },
         selection_caret = "   ",
         entry_prefix = " ",
         sorting_strategy = "ascending",
@@ -60,7 +61,7 @@ require('telescope').setup{
     },
     pickers = {
         find_files = {
-			find_command = { "rg", "--files", "--color", "never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
+			find_command = { "rg", "--files", "--color", "never", "--hidden", "--smart-case", "-g", "!.git" },
             prompt_prefix = " 󰈞 ",
             prompt_title = "search for a file",
             default_text = "",

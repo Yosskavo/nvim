@@ -42,9 +42,6 @@ vim.opt.laststatus = 3
 -- this is for history undo file
 vim.opt.undofile = true
 
--- this is for the theme's
-vim.lsp.semantic_tokens.enable = false
-
 -- Sets the delay for CursorHold (and swap file writing) to 250ms
 vim.opt.updatetime = 0
 
@@ -62,3 +59,9 @@ vim.opt.virtualedit = "block"
 vim.deprecate = function() end
 
 vim.opt.fixendofline = false
+
+-- Disable legacy remote plugin providers (Perl/Ruby/Python2) for faster startup
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0

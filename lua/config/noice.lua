@@ -10,7 +10,14 @@ local M ={}
 -- fg is the border/text color, bg is the background (use "NONE" for transparent)
 function M.setup()
   require("noice").setup({
-  lsp = { signature = { auto_open = { enabled = false } } },
+    lsp = {
+      signature = { auto_open = { enabled = false } },
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
+      },
+    },
 	cmdline = {
 		format = {
 		  -- Change the icon for the standard ":" command

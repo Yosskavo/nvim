@@ -191,14 +191,16 @@ function M.setup()
                         action = 'q',
                     },
                 },
-                vertical_center = false,
-                footer =
-				{
-					"You can change theme by <A-t>",
-					"Am Workin On Dyin",
-					" ", -- Adds a clean blank line separator
-                    "  " .. os.date("%A, %B %d, %Y — %I:%M %p") -- Outputs: Sunday, May 17, 2026 — 08:46 PM}
-        		}
+                footer = function()
+                    local current_theme = vim.g.colors_name or "default"
+                    return {
+                        "You can change theme by <A-t>",
+                        "Am Workin On Dyin",
+                        " ", -- Adds a clean blank line separator
+                        "  " .. os.date("%A, %B %d, %Y — %I:%M %p"),
+                        "󰏘  current theme : " .. current_theme,
+                    }
+                end,
 		}
     })
 end

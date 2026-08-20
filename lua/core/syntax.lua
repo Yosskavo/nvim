@@ -96,22 +96,34 @@ local function check_and_run()
 
     -- 1. Define Logic per Extension
     if ext == "c" then
-        -- Syntax check with gcc/cc (compile only, no linking)
         cmd = { "gcc", "-fsyntax-only", "-Wall", "-Wextra", "-Werror", file }
         title = " C Syntax Check "
     elseif ext == "cpp" or ext == "cc" then
         cmd = { "g++", "-fsyntax-only", "-Wall", "-Wextra", "-Werror", file }
         title = " C++ Syntax Check "
     elseif ext == "py" then
-        -- Using flake8 for python syntax/linting
-        cmd = { "flake8", file }
-        title = " Python Lint (flake8) "
+        if vim.fn.executable("flake8") == 1 then
+            cmd = { "flake8", file }
+            title = " Python Lint (flake8) "
+        else
+            cmd = { "python3", "-m", "py_compile", file }
+            title = " Python Syntax Check "
+        end
     elseif ext == "lua" then
-        -- luac is the standard way to check lua syntax without running
-        cmd = { "luac", "-p", file }
+        if vim.fn.executable("luac") == 1 then
+            cmd = { "luac", "-p", file }
+        else
+            cmd = { "luajit", "-bl", file }
+        end
         title = " Lua Syntax Check "
+    elseif ext == "go" then
+        cmd = { "go", "vet", file }
+        title = " Go Vet Check "
+    elseif ext == "odin" then
+        cmd = { "odin", "check", file }
+        title = " Odin Check "
     else
-        print("No runner configured for ." .. ext)
+        vim.notify("No runner configured for ." .. ext, vim.log.levels.WARN, { title = "Syntax Runner" })
         return
     end
 
@@ -121,22 +133,26 @@ local function check_and_run()
             if obj.code == 0 then
                 -- IF SYNTAX IS CLEAN -> RUN THE FILE
                 vim.cmd("cclose")
-                print("Syntax OK! Running...")
+                vim.notify("Syntax OK! Running...", vim.log.levels.INFO, { title = "Syntax Runner" })
                 -- Open a terminal to see the output
                 if ext == "py" then
                     vim.cmd("split | term python3 " .. file)
                 elseif ext == "lua" then
-                    vim.cmd("split | term luajit " .. file) -- or 'lua'
+                    local lua_bin = vim.fn.executable("luajit") == 1 and "luajit" or "lua"
+                    vim.cmd("split | term " .. lua_bin .. " " .. file)
                 elseif ext == "c" then
-                    -- Compile and Run for C
-                    vim.cmd("split | term gcc " .. file .. " -o out && ./out && rm out")
+                    vim.cmd("split | term gcc " .. file .. " -o out && ./out && rm -f out")
                 elseif ext == "cpp" then
-                    -- Compile and Run for C++
-                    vim.cmd("split | term g++ " .. file .. " -o out && ./out && rm out")
+                    vim.cmd("split | term g++ " .. file .. " -o out && ./out && rm -f out")
+                elseif ext == "go" then
+                    vim.cmd("split | term go run " .. file)
+                elseif ext == "odin" then
+                    vim.cmd("split | term odin run " .. file)
                 end
             else
                 -- IF SYNTAX FAILS -> SHOW ERRORS
-                local lines = vim.split(obj.stdout .. obj.stderr, "\n")
+                local output = (obj.stdout or "") .. (obj.stderr or "")
+                local lines = vim.split(output, "\n")
                 vim.fn.setqflist({}, 'r', { title = title, lines = lines })
                 make_qf_float(title)
             end

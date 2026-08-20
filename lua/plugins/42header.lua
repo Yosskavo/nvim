@@ -1,7 +1,7 @@
 return {
   "Diogo-ss/42-header.nvim",
   cmd = { "Stdheader" },
-  keys = { "<leader>nh" },
+  keys = { "<localleader>fh", "<leader>nh" },
   opts = {
     default_map = true,
     auto_update = true, -- Update header when saving.

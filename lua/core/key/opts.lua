@@ -1,6 +1,7 @@
 -- some key maps options
 vim.keymap.set('n', '<leader>fn', ":new<CR>", {desc = "new file", silent = true})
 vim.keymap.set('n', '<Esc>', ":nohlsearch<CR>", {desc = "clear search", silent = true})
+vim.keymap.set('n', '<leader>tp', ":TP<CR>", {desc = "Toggle Transparency", silent = true})
 
 -- Press <Esc> to clear search highlights
 -- vim.keymap.set("n", "<Esc>", function()

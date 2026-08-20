@@ -9,8 +9,8 @@ Plugins are declared in `lua/plugins/*.lua` and configured mainly in `lua/config
 
 ## Search / Navigation
 
-- telescope + fzf-native + live-grep-args
-- fzf-lua, grug-far, project.nvim, yazi, flash, cheatsheet
+- telescope + live-grep-args
+- harpoon (ThePrimeagen/harpoon2), grug-far, project.nvim, yazi, flash, cheatsheet
 
 ## LSP / Completion
 
@@ -27,7 +27,7 @@ Plugins are declared in `lua/plugins/*.lua` and configured mainly in `lua/config
 
 ## Utility and integrations
 
-- plenary, nui, lush, switcheroo, cord, typr/volt, neo-tree, promise-async, make.nvim
+- plenary, nui, lush, switcheroo, cord, typr/volt, promise-async, make.nvim
 
 ## Treesitter
 

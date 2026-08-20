@@ -3,20 +3,24 @@
 ## Requirements
 
 - Neovim `0.11+`
-- Nerd Font
+- Nerd Font (v3+)
 - `git`
 - `lazygit`
-- `fd` (recommended)
-- `ripgrep` (recommended)
-- `clangd`
+- `yazi`
+- `fd` & `ripgrep`
+- `clangd` (system package)
+- `gcc`, `g++`, `make`
 
-Optional but used in workflows:
+Optional language & dev tools:
 
-- `gcc`, `g++`
+- `valgrind` (Memory leak checking via `:Valgrind` / `<leader>lv`)
+- `c_formatter_42` (`pipx install c_formatter_42`)
+- `norminette` (`pipx install norminette`)
+- `go` / `gopls` (Go development)
+- `ols` / `odin` (Odin development)
+- `docker` / `docker-compose` (DevOps)
+- `terraform` / `tofu` (Infrastructure as Code)
 - `python3`, `flake8`
-- `luac`, `luajit`
-- `c_formatter_42`, `norminette`
-- `make`
 
 ## Install
 

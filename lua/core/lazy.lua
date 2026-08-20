@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local data_path = vim.fn.stdpath("data")
-local switcheroo_file = data_path .. "/SelectedTheme" -- Or "/switcheroo.json" depending on your fork
+local switcheroo_file = data_path .. "/Switcheroo/SelectedTheme"
 
 local function get_initial_theme()
   local file = io.open(switcheroo_file, "r")
@@ -61,6 +61,9 @@ require("lazy").setup({
 	},
 	-- install = { colorscheme = { "tokyonight"} },
 	-- install = {colorscheme = {"tokyonight"}},
+	rocks = {
+		enabled = false,
+	},
 	checker = {
 		enabled = false, -- check for plugin updates periodically
 		notify = false, -- notify on update

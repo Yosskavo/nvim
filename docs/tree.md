@@ -9,11 +9,10 @@ This config includes multiple tree/file navigation experiences.
 - keymap: `-` opens Oil in float mode
 - autocommand saves Oil changes on `InsertLeave` for `oil://*`
 
-## Neo-tree (alternative tree)
+## Yazi (terminal file manager)
 
-- plugin: `nvim-neo-tree/neo-tree.nvim`
-- command/key: `:Neotree` and `<A-e>` toggle left sidebar
-- configured with rounded borders, file watcher, custom folder/file icons
+- plugin: `mikavilpas/yazi.nvim`
+- keymap: `<A-y>` opens Yazi file manager
 
 ## Project root interaction
 

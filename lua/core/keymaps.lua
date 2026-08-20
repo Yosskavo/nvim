@@ -59,14 +59,11 @@ require("core.key.yazi")
 
 
 require("core.key.glance")
-
-require("core.key.arrows")
+require("core.key.harpoon")
 
 -- lua/keys/init.lua
 require("core.key.discipline")
 require("core.key.dial")
 require("core.key.neogen")
 require("core.key.flash")
-require("core.key.spotify")
-require("core.key.pomo")
 

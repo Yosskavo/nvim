@@ -41,11 +41,7 @@ fclean: clean
 
 re: fclean all
 
-run : re all
-	@echo "$(C_PURPLE)  Lunching executable $(NAME)...$(C_RESET)"
-	@./$(NAME)
-
-.PHONY: all run clean fclean re run
+.PHONY: all run clean fclean re
 ]], name)
     else
         local cc = (lang == "c++") and "c++" or "cc"
@@ -86,12 +82,12 @@ fclean: clean
 	@echo "$(C_RED)  Removing executable $(NAME)...$(C_RESET)"
 	@rm -fv $(NAME)
 
-run : re all
-	@echo "$(C_PURPLE)  Lunching executable $(NAME)...$(C_RESET)"
+run: re all
+	@echo "$(C_PURPLE)  Launching executable $(NAME)...$(C_RESET)"
 	@./$(NAME)
 
 re: fclean all
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run
 ]], name, cc, flags, ext, ext, ext)
     end
 end

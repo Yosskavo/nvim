@@ -1,10 +1,10 @@
-local glance = require('glance')
 local M = {}
 
 ---@diagnostic disable-next-line: missing-fields
 
 function M.setup()
-glance.setup({
+  local glance = require('glance')
+  glance.setup({
  height = 18, -- Height of the window
   zindex = 45,
   -- By default glance will open open the window in the center of the screen

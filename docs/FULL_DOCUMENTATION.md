@@ -28,35 +28,35 @@ Provides syntax checking and code-runner execution tailored for C, C++, Python, 
 
 Keymaps are modularized by their use-case.
 
-### `arrows.lua`
-Contains dynamic or specific functionality keymaps.
-
 ### `bufferline.lua`
-Contains dynamic or specific functionality keymaps.
+- **Keys mapped**: `<S-h>`, `<S-l>`, `<A-1..9>`, `<A-0>`, `<A-p>`, `<A-c>`, `<leader>ba`
 
 ### `dashboard.lua`
 - **Keys mapped**: `<localleader>d`
 
 ### `glance.lua`
-Contains dynamic or specific functionality keymaps.
+- **Keys mapped**: `gD`, `gd`, `gy`, `gi`
+
+### `harpoon.lua`
+- **Keys mapped**: `<leader>a` (Add file), `<C-e>` / `<leader>he` (Quick menu), `<leader>1..4` (Slots 1-4), `<leader>hk`/`<leader>hj` (Prev/Next)
 
 ### `hover.lua`
-- **Keys mapped**: `K`, `<A-K>`, `K`
+- **Keys mapped**: `K`, `<A-K>`
 
 ### `lazygit.lua`
 - **Keys mapped**: `<leader>lg`
 
 ### `lsp.lua`
-- **Keys mapped**: `<A-S-k>`, `<S-k>`
+- **Keys mapped**: `<A-S-k>`, `<S-k>` (hover), `<leader>ca` (code actions), `<leader>ti` (toggle inlay hints), `<A-o>` / `<leader>cs` (switch header/source), `<leader>lv` (valgrind leak check)
 
 ### `norm.lua`
-- **Keys mapped**: `<localleader>fn`, `<localleader>fh`
+- **Keys mapped**: `<localleader>fn` (42 C formatter), `<localleader>fh` (42 standard header), `<leader>hn` (Norm rules cheat-sheet), `<leader>hc` (live Norm check)
 
 ### `notify.lua`
 - **Keys mapped**: `<leader>wn`, `<leader>nc`
 
 ### `nui.lua`
-- **Keys mapped**: `<localleader>m`, `<leader>hn`
+- **Keys mapped**: `<localleader>m` (man page popup)
 
 ### `oil.lua`
 - **Keys mapped**: `-`
@@ -68,16 +68,16 @@ Contains dynamic or specific functionality keymaps.
 - **Keys mapped**: `<A-t>`
 
 ### `syntax.lua`
-- **Keys mapped**: `<Tab>`, `<S-Tab>`
+- **Keys mapped**: `<Tab>`, `<S-Tab>`, `<localleader>sc`, `<localleader>e`
 
 ### `telescope.lua`
-Contains dynamic or specific functionality keymaps.
+- **Keys mapped**: `<leader><leader>` (files), `<leader>fg` (live grep), `<leader>fb` (buffers), `<leader>fh` (help tags), `<leader>fH` (highlights)
 
 ### `term.lua`
-Contains dynamic or specific functionality keymaps.
+- **Keys mapped**: `<leader>th`, `<leader>tv`, `<leader>tt`
 
 ### `text.lua`
-- **Keys mapped**: `<S-A-j>`, `<S-A-k>`, `<S-A-j>`, `<S-A-k>`, `<S-A-j>`, `<S-A-k>`, `<S-A-p>`
+- **Keys mapped**: `<S-A-j>`, `<S-A-k>`, `<S-A-p>`
 
 ### `todo.lua`
 - **Keys mapped**: `<leader>ft`
@@ -229,42 +229,30 @@ Plugins are loaded via `lazy.nvim`. Each plugin file specifies the repository, l
 - **What it does:** Autocompletion engine. Configured to use LSP, snippets, and buffer sources. It features a hard-mode that prevents using arrows to enforce `C-n`/`C-p`.
 - **Config/Keys:** Includes custom config.
 
+### `harpoon.lua` (ThePrimeagen/harpoon - harpoon2)
+- **What it does:** High-speed 4-slot file switcher and project buffer bookmarker.
+- **Config/Keys:** `<leader>a` (add), `<C-e>` / `<leader>he` (menu), `<leader>1..4` (direct jump).
+
 ### `oil.lua` (stevearc/oil.nvim)
 - **What it does:** File explorer that lets you edit your filesystem like a normal Neovim buffer.
-- **Config/Keys:** Includes custom config.
-
-### `pets.lua` (giabari/pets.nvim)
-- **What it does:** Enhances standard Neovim capabilities.
 - **Config/Keys:** Includes custom config.
 
 ### `plenary.lua` (nvim-lua/plenary.nvim)
 - **What it does:** Enhances standard Neovim capabilities.
 
-### `pomo.lua` (bxrne/pomo.nvim)
-- **What it does:** Enhances standard Neovim capabilities.
-- **Config/Keys:** Includes custom keys, custom config.
-
 ### `project.lua` (ahmedkhalf/project.nvim)
-- **What it does:** Enhances standard Neovim capabilities.
+- **What it does:** Automatic root directory detection and project management.
 - **Config/Keys:** Includes custom config.
 
 ### `promise-async.lua` (kevinhwang91/promise-async)
 - **What it does:** Enhances standard Neovim capabilities.
 
 ### `screenkey.lua` (NStefan002/screenkey.nvim)
-- **What it does:** Enhances standard Neovim capabilities.
-- **Config/Keys:** Includes custom config.
-
-### `smear-cursor.lua` (sphamba/smear-cursor.nvim)
-- **What it does:** Enhances standard Neovim capabilities.
-- **Config/Keys:** Includes custom config.
-
-### `spotify.lua` (yosskavo/spotify.nvim)
-- **What it does:** Enhances standard Neovim capabilities.
+- **What it does:** Screen key press display widget.
 - **Config/Keys:** Includes custom config.
 
 ### `surround.lua` (kylechui/nvim-surround)
-- **What it does:** Enhances standard Neovim capabilities.
+- **What it does:** Add/change/delete surrounding delimiter pairs.
 - **Config/Keys:** Includes custom config.
 
 ### `switcheroo.lua` (MrSloth-dev/Switcheroo.nvim)

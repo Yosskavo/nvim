@@ -27,5 +27,5 @@
 --- should config the lazy cs it overlap the origin config : done
 
 --- next ---
---> lazy git
---> hide .o from telescope and any search
+--> lazy git                             : done
+--> hide .o from telescope and any search: done

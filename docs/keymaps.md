@@ -34,14 +34,36 @@ Loaded from `lua/core/keymaps.lua` via `lua/core/key/*.lua`.
 - `<leader>th` / `<leader>tv` / `<leader>tt` terminal open modes
 - `<localleader>d` dashboard
 - `<A-t>` Switcheroo (theme switch)
+- `<leader>tp` / `:TP` toggle transparency (or `:TP on` / `:TP off`)
 
-## LSP / Trouble / Help
+## Harpoon (Fast File Pinning)
 
-- `gd`, `gD`, `<leader>D`
+- `<leader>a` add current file to Harpoon
+- `<C-e>` / `<leader>he` toggle Harpoon quick menu
+- `<leader>1` .. `<leader>4` jump directly to Harpoon slot 1 to 4
+- `<leader>hk` / `<leader>hj` cycle previous / next Harpoon file
+
+## Make.nvim (Makefile Runner)
+
+- `<leader>mm` Makefile target picker (Telescope)
+- `<leader>mt` toggle Make terminal
+- `<leader>mr` run default Make target
+
+## LSP / Trouble / Code Helpers
+
+- `gd`, `gD`, `<leader>D` go to definition/declaration/type
+- `<leader>ca` LSP Code Actions (auto imports, quickfixes)
+- `<leader>ti` toggle LSP Inlay Hints
+- `<A-o>` / `<leader>cs` switch between Header and Source (`.c` $\leftrightarrow$ `.h`, `.cpp` $\leftrightarrow$ `.hpp`)
+- `<leader>lv` / `:Valgrind` / `:Leaks` run Valgrind memory leak checker
 - `<leader>wa`, `<leader>wr`, `<leader>wl`, `<leader>ra`
 - `<leader>xx`, `<leader>xX`, `<leader>xs`, `<leader>xl`, `<leader>xL`, `<leader>xQ`
 - `<localleader>m` dynamic man/cppman helper
-- `<leader>hn` Norminette rules popup
+- `<leader>cm` / `<leader>cM` CPPMan word/search
+- `<leader>hn` Norminette rules cheat-sheet
+- `<leader>hc` Live Norminette check
+- `<localleader>fn` Apply 42 C formatter
+- `<localleader>fh` Insert 42 standard header
 
 ## Syntax helper
 
