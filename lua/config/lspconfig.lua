@@ -43,10 +43,20 @@ for type, icon in pairs(signs) do
 end
 
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
+
+  -- Enable Inlay Hints (shows parameter names, types, and values directly inline like LazyVim)
+  if client and client.supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+
+  -- Toggle Inlay Hints keymap (like LazyVim)
+  map("n", "<leader>uh", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+  end, opts "Toggle Inlay Hints")
 
   -- navigation
   map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
@@ -63,7 +73,6 @@ M.on_attach = function(_, bufnr)
   -- actions
   map("n", "<leader>ra", vim.lsp.buf.rename, opts "Rename symbol")
 end
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- disable semantic tokens
 M.on_init = function(client)
@@ -82,4 +91,3 @@ M.config = {
 }
 
 return M
-

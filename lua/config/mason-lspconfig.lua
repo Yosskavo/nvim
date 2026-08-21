@@ -22,9 +22,29 @@ function M.setup()
     "terraformls",
   }
 
-  -- Setup system clangd directly (avoids Mason zip/unzip download freeze)
+  -- Setup system clangd directly with full inlay hints & placeholder support
   lspconfig.clangd.setup(vim.tbl_extend("force", base, {
-    cmd = { "clangd", "--background-index" },
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=llvm",
+    },
+    initializationOptions = {
+      clangdFileStatus = true,
+      usePlaceholders = true,
+      completeUnimported = true,
+      semanticHighlighting = true,
+      inlayHints = {
+        designators = true,
+        enabled = true,
+        parameterNames = true,
+        deducedTypes = true,
+      },
+    },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
   }))
 
@@ -43,6 +63,13 @@ function M.setup()
         lspconfig.lua_ls.setup(vim.tbl_extend("force", base, {
           settings = {
             Lua = {
+              hint = {
+                enable = true,
+                paramType = true,
+                paramName = "All",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
               diagnostics = {
                 globals = { "vim" },
               },
@@ -75,6 +102,28 @@ function M.setup()
               },
               staticcheck = true,
               gofumpt = true,
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+            },
+          },
+        }))
+      end,
+      ["pyright"] = function()
+        lspconfig.pyright.setup(vim.tbl_extend("force", base, {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace",
+              },
             },
           },
         }))
@@ -117,4 +166,3 @@ function M.setup()
 end
 
 return M
-
