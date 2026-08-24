@@ -38,3 +38,15 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.conceallevel = 3
   end,
 })
+
+vim.api.nvim_create_user_command("LspTogglePersistent", function()
+  local state = require("core.state")
+  local is_enabled = state.toggle("lsp_autostart", true)
+  if is_enabled then
+    vim.cmd("LspStart")
+    vim.notify("LSP Auto-start enabled permanently", vim.log.levels.INFO)
+  else
+    vim.cmd("LspStop")
+    vim.notify("LSP Auto-start disabled permanently", vim.log.levels.WARN)
+  end
+end, { desc = "Toggle LSP autostart permanently" })

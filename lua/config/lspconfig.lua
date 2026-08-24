@@ -48,14 +48,18 @@ M.on_attach = function(client, bufnr)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
 
-  -- Enable Inlay Hints (shows parameter names, types, and values directly inline like LazyVim)
+  -- Enable Inlay Hints persistently
   if client and client.supports_method("textDocument/inlayHint") then
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    local inlay_hints_enabled = require("core.state").get("inlay_hints", true)
+    vim.lsp.inlay_hint.enable(inlay_hints_enabled, { bufnr = bufnr })
   end
 
-  -- Toggle Inlay Hints keymap (like LazyVim)
+  -- Toggle Inlay Hints keymap persistently
   map("n", "<leader>uh", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+    local is_enabled = not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+    vim.lsp.inlay_hint.enable(is_enabled, { bufnr = bufnr })
+    require("core.state").set("inlay_hints", is_enabled)
+    vim.notify("Inlay hints " .. (is_enabled and "enabled" or "disabled") .. " globally")
   end, opts "Toggle Inlay Hints")
 
   -- navigation
@@ -88,6 +92,7 @@ M.config = {
   on_attach = M.on_attach,
   on_init = M.on_init,
   capabilities = M.capabilities,
+  autostart = require("core.state").get("lsp_autostart", true),
 }
 
 return M
