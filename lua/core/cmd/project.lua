@@ -196,7 +196,9 @@ vim.api.nvim_create_user_command("NewProject", function()
                     
                     -- PATH A: Clone Existing Repo First
                     if link == "Yes" then
-                        vim.ui.input({ prompt = " GitHub Username: ", default = "yel-mota" }, function(user)
+                        local default_user = vim.fn.system("git config --global user.name"):gsub("%s+", "")
+                        if default_user == "" then default_user = "Yosskavo" end
+                        vim.ui.input({ prompt = " GitHub Username: ", default = default_user }, function(user)
                             if not user or user == "" then return end
                             vim.ui.input({ prompt = "󰏖 Repo Name: ", default = name }, function(repo)
                                 if not repo or repo == "" then repo = name end

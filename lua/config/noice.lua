@@ -27,7 +27,11 @@ function M.setup()
 		  -- Change the icon for search "?"
 		  search_up = { kind = "search", pattern = "^%?", icon = "  ", lang = "regex" },
 		  -- Change the icon for shell commands ":"
-		  filter = { pattern = "^:%s*!", icon = " ", lang = "zsh" },
+		  filter = { pattern = "^:%s*!", icon = " ", lang = "bash" },
+		  -- Change the icon for help
+		  help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖 ", lang = "vim" },
+		  -- Change the icon for man
+		  man = { pattern = "^:%s*Man%s+", icon = "󱌎 ", lang = "bash" },
 		},
 	messages = {
 		-- NOTE: If you enable messages, then the cmdline is enabled automatically.
