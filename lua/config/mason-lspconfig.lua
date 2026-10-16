@@ -12,14 +12,14 @@ function M.setup()
 
   local servers = {
     "lua_ls",
-    "pyright",
-    "bashls",
-    "gopls",
-    "dockerls",
-    "docker_compose_language_service",
-    "yamlls",
-    "jsonls",
-    "terraformls",
+    -- "pyright",
+    -- "bashls",
+    -- "gopls",
+    -- "dockerls",
+    -- "docker_compose_language_service",
+    -- "yamlls",
+    -- "jsonls",
+    -- "terraformls",
   }
 
   -- Setup system clangd directly with full inlay hints & placeholder support
