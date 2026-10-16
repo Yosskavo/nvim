@@ -66,4 +66,5 @@ require("core.key.discipline")
 require("core.key.dial")
 require("core.key.neogen")
 require("core.key.flash")
+require("core.key.commands")
 

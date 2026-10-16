@@ -62,10 +62,12 @@ M.on_attach = function(client, bufnr)
     vim.notify("Inlay hints " .. (is_enabled and "enabled" or "disabled") .. " globally")
   end, opts "Toggle Inlay Hints")
 
-  -- navigation
-  map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
-  map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
-  map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
+  -- navigation with Glance (VSCode-like peek UI)
+  map("n", "gd", "<cmd>Glance definitions<CR>", opts "Glance definition")
+  map("n", "gr", "<cmd>Glance references<CR>", opts "Glance references")
+  map("n", "gy", "<cmd>Glance type_definitions<CR>", opts "Glance type definition")
+  map("n", "gi", "<cmd>Glance implementations<CR>", opts "Glance implementation")
+  map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration (direct jump)")
 
   -- workspace
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")

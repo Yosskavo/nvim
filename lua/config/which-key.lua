@@ -55,12 +55,7 @@ function M.setup()
 		{ "<leader>fn", desc = "New Empty Buffer" },
 		{ "<leader>ft", desc = "Todo Comments" },
 
-		{ "<leader>g", group = "Glance / Definitions" },
-		{ "<leader>gd", desc = "Glance Definitions" },
-		{ "<leader>gD", desc = "LSP Declaration" },
-		{ "<leader>gR", desc = "Glance References" },
-		{ "<leader>gY", desc = "Glance Type Definitions" },
-		{ "<leader>gM", desc = "Glance Implementations" },
+
 
 		{ "<leader>h", group = "Harpoon / Help / 42 Norm" },
 		{ "<leader>he", desc = "Harpoon Quick Menu" },
@@ -122,6 +117,11 @@ function M.setup()
 		{ "<localleader>d", desc = "Dashboard" },
 		{ "<localleader>m", desc = "Dynamic Manual / Manpage" },
 		{ "<localleader>e", desc = "Error List (Quickfix Float)" },
+		{ "<localleader>c", group = "Commands" },
+		{ "<localleader>cp", desc = "New Project" },
+		{ "<localleader>cm", desc = "Generate Makefile" },
+		{ "<localleader>cc", desc = "Clone Repo" },
+		{ "<localleader>cu", desc = "Update Config (Pull)" },
 	})
 end
 
