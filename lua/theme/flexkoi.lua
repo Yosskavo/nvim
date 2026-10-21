@@ -1,4 +1,4 @@
-return 
+return
 {
 	"kepano/flexoki",
 }
