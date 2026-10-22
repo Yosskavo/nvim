@@ -10,7 +10,7 @@ return {
       -- Odin
       "odin",
       -- Web / Docs
-      "html", "css",
+      "html", "css", "man",
       -- DevOps / Infrastructure
       "dockerfile", "yaml", "json", "terraform", "hcl", "toml", "make"
     },

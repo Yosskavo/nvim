@@ -48,9 +48,11 @@ function M.setup()
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
   }))
 
-  -- Setup Odin Language Server (ols) if available
+  -- Setup Odin Language Server (ols) if available (handles both .odin and .inv)
   if lspconfig.ols then
-    lspconfig.ols.setup(base)
+    lspconfig.ols.setup(vim.tbl_extend("force", base, {
+      filetypes = { "odin", "inv" },
+    }))
   end
 
   mason_lspconfig.setup({

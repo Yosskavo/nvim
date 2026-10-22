@@ -35,6 +35,7 @@ return function(_, opts)
 
   pcall(function()
     vim.treesitter.language.register("bash", "zsh")
+    vim.treesitter.language.register("odin", "inv")
   end)
 end
 

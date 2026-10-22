@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
         if vim.bo.modified and vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
             -- Use pcall (protected call) to prevent error messages from popping up
 			-- require("notify")("auto-save")
-            pcall(vim.api.nvim_command, "silent! write")
+            pcall(vim.cmd, "silent! write")
         end
     end,
 })

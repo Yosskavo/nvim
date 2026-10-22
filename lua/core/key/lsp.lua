@@ -7,9 +7,9 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LS
 
 -- Toggle Inlay Hints (Neovim 0.10+)
 vim.keymap.set("n", "<leader>ti", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    local status = vim.lsp.inlay_hint.is_enabled() and "Enabled" or "Disabled"
-    vim.notify("LSP Inlay Hints: " .. status, vim.log.levels.INFO, { title = "LSP" })
+    local is_enabled = not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+    vim.lsp.inlay_hint.enable(is_enabled, { bufnr = 0 })
+    vim.notify("LSP Inlay Hints: " .. (is_enabled and "Enabled" or "Disabled"), vim.log.levels.INFO, { title = "LSP" })
 end, { desc = "Toggle Inlay Hints" })
 
 -- Valgrind Memory Leak Checker

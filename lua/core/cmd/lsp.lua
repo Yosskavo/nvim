@@ -46,10 +46,13 @@ vim.api.nvim_create_user_command("LspTogglePersistent", function()
     pcall(vim.cmd, "LspStart")
     vim.notify("LSP Auto-start enabled permanently (Restart Neovim to take full effect)", vim.log.levels.INFO)
   else
-    -- Safely stop all active clients using Lua API
-    local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
-    for _, client in ipairs(get_clients()) do
-      vim.lsp.stop_client(client.id)
+    -- Safely stop all active clients using modern Lua API
+    for _, client in ipairs(vim.lsp.get_clients()) do
+      if client.stop then
+        client:stop()
+      else
+        vim.lsp.stop_client(client.id)
+      end
     end
     -- Fallback for UI/lspconfig cleanups
     pcall(vim.cmd, "LspStop")

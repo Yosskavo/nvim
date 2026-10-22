@@ -1,23 +1,43 @@
--- 1. Register the custom man parser using the new nvim-treesitter API
+-- 1. Register the custom man parser using nvim-treesitter API
+local ok_parsers, parsers = pcall(require, 'nvim-treesitter.parsers')
+if ok_parsers and parsers then
+  parsers.man = {
+    install_info = {
+      url = 'https://github.com/ribru17/tree-sitter-man',
+      files = { 'src/parser.c' },
+      branch = 'master',
+    },
+    filetype = 'man',
+  }
+end
+
+-- Also ensure TSUpdate hook is preserved
 vim.api.nvim_create_autocmd('User', {
   pattern = 'TSUpdate',
   callback = function()
-    require('nvim-treesitter.parsers').man = {
-      install_info = {
-        url = 'https://github.com/ribru17/tree-sitter-man',
-        files = { 'src/parser.c' },
-        branch = 'master',
-      },
-    }
+    local ok, p = pcall(require, 'nvim-treesitter.parsers')
+    if ok and p then
+      p.man = {
+        install_info = {
+          url = 'https://github.com/ribru17/tree-sitter-man',
+          files = { 'src/parser.c' },
+          branch = 'master',
+        },
+        filetype = 'man',
+      }
+    end
   end,
 })
 
--- 2. Ensure Tree-sitter starts natively for man pages in 0.12.0
+-- 2. Ensure Tree-sitter starts natively for man pages if available, or safely fallback
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "man",
   group = vim.api.nvim_create_augroup("TSManStart", { clear = true }),
   callback = function(args)
-    vim.treesitter.start(args.buf, 'man')
+    local ok = pcall(vim.treesitter.start, args.buf, 'man')
+    if not ok then
+      vim.bo[args.buf].syntax = "man"
+    end
   end,
 })
 
