@@ -77,6 +77,15 @@ require('telescope').setup{
       live_grep_args = {
         auto_quoting = true,
       },
+      project = {
+        base_dirs = {
+          { path = "~", max_depth = 5 },
+        },
+        hidden_files = true,
+        theme = "dropdown",
+        order_by = "recent",
+        search_by = "title",
+      },
     },
 }
 

@@ -149,6 +149,13 @@ function M.setup()
                         action = 'Telescope find_files',
                     },
                     {
+                        icon = '  ',
+                        desc = 'Projects             ',
+                        key = 's',
+                        key_format = ' [%s]',
+                        action = 'SearchGitProjects',
+                    },
+                    {
                         icon = "  ",
                         desc = "Lazy Git     ",
                         key = 'g',

@@ -265,3 +265,217 @@ vim.api.nvim_create_user_command("NewProject", function()
     end)
 
 end, { desc = "Interactive Multi-Lang Project Generator" })
+
+-- ============================================================================
+-- 4. SEARCH GIT PROJECTS (All normal & hidden git repos)
+-- ============================================================================
+
+local function get_git_branch(path)
+    local head_file = io.open(path .. "/.git/HEAD", "r")
+    if not head_file then return "" end
+    local content = head_file:read("*l") or ""
+    head_file:close()
+    local branch = content:match("ref: refs/heads/(.+)")
+    if branch then
+        return branch
+    elseif #content > 0 then
+        return content:sub(1, 7)
+    end
+    return ""
+end
+
+local function find_all_git_projects()
+    local cmd
+    if vim.fn.executable("fd") == 1 then
+        cmd = {
+            "fd", "-H", "-I", "-t", "d", "^\\.git$", vim.fn.expand("~"),
+            "--max-depth", "6",
+            "-E", ".cache",
+            "-E", ".local/share/nvim",
+            "-E", ".local/share/Trash",
+            "-E", ".trash",
+            "-E", ".cargo",
+            "-E", ".rustup",
+            "-E", "node_modules",
+            "-E", ".venv",
+            "-E", "venv",
+            "-x", "echo", "{//}"
+        }
+    else
+        cmd = {
+            "sh", "-c",
+            [[find "$HOME" -maxdepth 6 -name .git -type d \
+                -not -path "*/.cache/*" \
+                -not -path "*/.local/share/nvim/*" \
+                -not -path "*/.local/share/Trash/*" \
+                -not -path "*/.trash/*" \
+                -not -path "*/.cargo/*" \
+                -not -path "*/.rustup/*" \
+                -not -path "*/node_modules/*" \
+                2>/dev/null | sed "s|/\.git$||"]]
+        }
+    end
+
+    local obj = vim.system(cmd):wait()
+    local raw_lines = vim.split(obj.stdout or "", "\n", { trimempty = true })
+    local seen = {}
+    local projects = {}
+    local home = vim.fn.expand("~")
+
+    for _, p in ipairs(raw_lines) do
+        if not seen[p] and vim.fn.isdirectory(p) == 1 then
+            seen[p] = true
+            local name = vim.fn.fnamemodify(p, ":t")
+            local display_path = p
+            if p:sub(1, #home) == home then
+                display_path = "~" .. p:sub(#home + 1)
+            end
+            local branch = get_git_branch(p)
+            table.insert(projects, {
+                path = p,
+                name = name,
+                display_path = display_path,
+                branch = branch,
+            })
+        end
+    end
+
+    table.sort(projects, function(a, b)
+        return a.name:lower() < b.name:lower()
+    end)
+
+    return projects
+end
+
+local function search_git_projects(opts)
+    opts = opts or {}
+
+    -- Ensure telescope is loaded
+    local ok_t, _ = pcall(require, "telescope")
+    if not ok_t then
+        local ok_l, lazy = pcall(require, "lazy")
+        if ok_l then
+            lazy.load({ plugins = { "telescope.nvim" } })
+        end
+    end
+
+    local pickers = require("telescope.pickers")
+    local finders = require("telescope.finders")
+    local conf = require("telescope.config").values
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+    local entry_display = require("telescope.pickers.entry_display")
+
+    local projects = find_all_git_projects()
+    if #projects == 0 then
+        vim.notify("No git projects found!", vim.log.levels.WARN, { title = "Git Projects" })
+        return
+    end
+
+    local displayer = entry_display.create({
+        separator = " ",
+        items = {
+            { width = 2 },
+            { width = 24 },
+            { width = 14 },
+            { remaining = true },
+        },
+    })
+
+    local function make_display(entry)
+        return displayer({
+            { "", "Directory" },
+            { entry.name, "Title" },
+            { entry.branch ~= "" and (" " .. entry.branch) or "", "Comment" },
+            { entry.display_path, "Comment" },
+        })
+    end
+
+    pickers.new(opts, {
+        prompt_title = "Git Projects (<CR>: Files | <C-e>: Oil | <C-g>: LazyGit | <C-w>: cd)",
+        finder = finders.new_table({
+            results = projects,
+            entry_maker = function(entry)
+                return {
+                    value = entry.path,
+                    display = make_display,
+                    ordinal = entry.name .. " " .. entry.display_path .. " " .. entry.branch,
+                    name = entry.name,
+                    display_path = entry.display_path,
+                    branch = entry.branch,
+                }
+            end,
+        }),
+        sorter = conf.generic_sorter(opts),
+        attach_mappings = function(prompt_bufnr, map)
+            local function select_project(action_type)
+                local selection = action_state.get_selected_entry()
+                actions.close(prompt_bufnr)
+                if not selection then return end
+
+                local project_path = selection.value
+
+                -- Change directory
+                vim.fn.chdir(project_path)
+
+                -- Sync with telescope-project if available
+                local ok, proj_actions = pcall(require, "telescope._extensions.project.actions")
+                if ok and proj_actions.add_project_path then
+                    pcall(proj_actions.add_project_path, project_path)
+                end
+
+                if action_type == "find_files" then
+                    vim.schedule(function()
+                        require("telescope.builtin").find_files({ cwd = project_path })
+                    end)
+                elseif action_type == "oil" then
+                    vim.schedule(function()
+                        local oil_ok, oil = pcall(require, "oil")
+                        if oil_ok then
+                            oil.open(project_path)
+                        else
+                            vim.cmd("edit " .. vim.fn.fnameescape(project_path))
+                        end
+                    end)
+                elseif action_type == "lazygit" then
+                    vim.schedule(function()
+                        vim.cmd("LazyGit")
+                    end)
+                elseif action_type == "tab" then
+                    vim.cmd("tabnew")
+                    vim.fn.chdir(project_path)
+                    vim.schedule(function()
+                        require("telescope.builtin").find_files({ cwd = project_path })
+                    end)
+                elseif action_type == "cd" then
+                    vim.notify("󰉍 Switched directory to: " .. selection.display_path, vim.log.levels.INFO)
+                end
+            end
+
+            actions.select_default:replace(function()
+                select_project("find_files")
+            end)
+
+            map("i", "<C-e>", function() select_project("oil") end)
+            map("n", "e", function() select_project("oil") end)
+            map("i", "<C-o>", function() select_project("oil") end)
+            map("n", "o", function() select_project("oil") end)
+            map("i", "<C-g>", function() select_project("lazygit") end)
+            map("n", "g", function() select_project("lazygit") end)
+            map("i", "<C-w>", function() select_project("cd") end)
+            map("n", "w", function() select_project("cd") end)
+            map("i", "<C-t>", function() select_project("tab") end)
+            map("n", "t", function() select_project("tab") end)
+
+            return true
+        end,
+    }):find()
+end
+
+vim.api.nvim_create_user_command("SearchGitProjects", function()
+    search_git_projects()
+end, { desc = "Search all git projects (normal & hidden)" })
+
+vim.api.nvim_create_user_command("GitProjects", function()
+    search_git_projects()
+end, { desc = "Search all git projects (normal & hidden)" })
