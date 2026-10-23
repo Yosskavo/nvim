@@ -66,11 +66,10 @@ vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
-
-vim.opt.guifont = "JetBrainsMono Nerd Font:h7"
-
 -- Ensure user binaries (like Go tools) are in PATH
 local go_bin = vim.fn.expand("~/go/bin")
 if vim.fn.isdirectory(go_bin) == 1 and not string.find(vim.env.PATH, go_bin, 1, true) then
   vim.env.PATH = go_bin .. ":" .. vim.env.PATH
 end
+
+vim.o.guifont = "JetBrainsMono NFM:h14"
