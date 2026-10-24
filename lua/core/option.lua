@@ -72,4 +72,4 @@ if vim.fn.isdirectory(go_bin) == 1 and not string.find(vim.env.PATH, go_bin, 1, 
   vim.env.PATH = go_bin .. ":" .. vim.env.PATH
 end
 
-vim.o.guifont = "JetBrainsMono NFM:h14"
+vim.o.guifont = "JetBrainsMono NFM:h12"
