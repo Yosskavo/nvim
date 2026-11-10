@@ -6,6 +6,7 @@ local delete = '-'
 
 function M.setup()
 	require("gitsigns").setup({
+		current_line_blame = true,
 		  signs = {
 			add          = { text = add },
 			change       = { text = change },
